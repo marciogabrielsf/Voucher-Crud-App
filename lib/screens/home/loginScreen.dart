@@ -10,14 +10,4 @@ class LoginScreen extends StatelessWidget {
       body: Body(),
     );
   }
-
-  AppBar CustomAppBar() {
-    return AppBar(
-      elevation: 0,
-      leading: IconButton(
-        icon: Icon(Icons.abc),
-        onPressed: () {},
-      ),
-    );
-  }
 }

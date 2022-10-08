@@ -6,4 +6,4 @@ const kTextColor = Color(0xFF000000);
 const kTextColorInv = Color(0xFFFFFFFF);
 const kBackgroundColor = Color(0xFFE0E0E0);
 
-const double kDefaultPadding = 20.0;
+const double kDefaultPadding = 40.0;
