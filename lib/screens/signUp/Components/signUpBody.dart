@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test_project/constants.dart';
 
-class Body extends StatelessWidget {
+class Body extends StatefulWidget {
   const Body({super.key});
+
+  @override
+  State<Body> createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
+  bool isTermChecked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +49,33 @@ class Body extends StatelessWidget {
                 placeholder: 'Senha',
                 obscureText: true,
               ),
+              SizedBox(
+                height: 10,
+              ),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Checkbox(
+                      value: isTermChecked,
+                      onChanged: (checked) {
+                        setState(() {
+                          isTermChecked = !isTermChecked;
+                        });
+                      }),
+                  GestureDetector(
+                    child: Text(
+                      "Eu concordo com os termos de uso.",
+                    ),
+                    onTap: () {
+                      setState(() {
+                        isTermChecked = !isTermChecked;
+                      });
+                    },
+                  )
+                ],
+              ),
+
               SizedBox(
                 height: 25,
               ),

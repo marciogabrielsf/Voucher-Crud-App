@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test_project/screens/home/loginScreen.dart';
+import 'package:flutter_test_project/screens/login/loginScreen.dart';
 import 'constants.dart';
 
 void main() {
@@ -15,6 +15,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: kBackgroundColor,
         primaryColor: kPrimaryColor,
+        unselectedWidgetColor: kSecondaryColor,
+        toggleableActiveColor: kPrimaryColor,
         textTheme: Theme.of(context).textTheme.apply(
               bodyColor: kTextColor,
               fontFamily: 'Inter',

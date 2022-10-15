@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test_project/constants.dart';
+import 'package:flutter_test_project/screens/home/HomeScreen.dart';
 import 'package:flutter_test_project/screens/signUp/signUpScreen.dart';
 
-class Body extends StatelessWidget {
+class Body extends StatefulWidget {
   const Body({super.key});
+
+  @override
+  State<Body> createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +63,8 @@ class Body extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: TextField(
+                      keyboardType: TextInputType.emailAddress,
+                      controller: _emailController,
                       style: TextStyle(color: Colors.black),
                       decoration: InputDecoration(
                         hintText: 'Email',
@@ -76,6 +87,7 @@ class Body extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: TextField(
+                      controller: _passwordController,
                       obscureText: true,
                       style: TextStyle(color: Colors.black),
                       decoration: InputDecoration(
@@ -106,7 +118,14 @@ class Body extends StatelessWidget {
                     ),
                   ),
                   onTap: () {
-                    print("CLICOU");
+                    print("Email: ${_emailController.text}");
+                    print("Senha: ${_passwordController.text}");
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => HomeScreen(),
+                      ),
+                    );
                   },
                 ),
                 SizedBox(
