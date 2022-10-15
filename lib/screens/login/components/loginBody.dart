@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test_project/api/fetchLogin.dart';
 import 'package:flutter_test_project/constants.dart';
@@ -21,6 +22,7 @@ class _BodyState extends State<Body> {
     return SafeArea(
       child: Center(
         child: Form(
+          key: _formkey,
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
@@ -68,7 +70,7 @@ class _BodyState extends State<Body> {
                       child: TextFormField(
                         validator: (email) {
                           if (email == null || email.isEmpty) {
-                            return 'Por favor, Digite sua senha.';
+                            return 'Por favor, Digite seu email.';
                           } else if (!RegExp(
                                   r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                               .hasMatch(_emailController.text)) {
@@ -136,8 +138,22 @@ class _BodyState extends State<Body> {
                         ),
                       ),
                     ),
-                    onTap: () {
-                      login(_emailController, _passwordController);
+                    onTap: () async {
+                      FocusScopeNode currentFocus = FocusScope.of(context);
+                      if (_formkey.currentState!.validate()) {
+                        bool loggedIn = await login(
+                            _emailController.text, _passwordController.text);
+                        if (!currentFocus.hasPrimaryFocus) {
+                          currentFocus.unfocus();
+                        }
+                        if (loggedIn) {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HomeScreen()),
+                          );
+                        }
+                      }
 
                       //Navigator.pushReplacement(
                       //  context,

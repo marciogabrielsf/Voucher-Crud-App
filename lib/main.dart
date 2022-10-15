@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test_project/screens/home/HomeScreen.dart';
+import 'package:flutter_test_project/screens/loading/loadingScreen.dart';
 import 'package:flutter_test_project/screens/login/loginScreen.dart';
 import 'constants.dart';
 
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
             ),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: LoginScreen(),
+      home: LoadingScreen(),
     );
   }
 }
