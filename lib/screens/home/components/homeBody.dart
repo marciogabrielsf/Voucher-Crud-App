@@ -18,7 +18,7 @@ class _HomeBodyState extends State<HomeBody> {
         child: SingleChildScrollView(
       child: Column(
         children: [
-          // appbar
+          // appBar
 
           Padding(
             padding: const EdgeInsets.all(25),
