@@ -1,9 +1,8 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test_project/api/fetchLogin.dart';
 import 'package:flutter_test_project/constants.dart';
-import 'package:flutter_test_project/screens/home/HomeScreen.dart';
 import 'package:flutter_test_project/screens/signUp/signUpScreen.dart';
+import 'package:flutter/cupertino.dart';
 
 class Body extends StatefulWidget {
   const Body({super.key});
@@ -16,6 +15,7 @@ class _BodyState extends State<Body> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _formkey = GlobalKey<FormState>();
+  bool isFetching = false;
 
   @override
   Widget build(BuildContext context) {
@@ -124,38 +124,52 @@ class _BodyState extends State<Body> {
                     height: 25,
                   ),
 
-                  GestureDetector(
-                    child: Container(
-                      padding: EdgeInsets.all(20),
-                      decoration: BoxDecoration(color: kPrimaryColor),
-                      child: Center(
-                        child: Text(
-                          "Entrar",
-                          style: TextStyle(
-                            color: kTextColorInv,
-                            fontWeight: FontWeight.bold,
-                          ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Container(
+                        height: 60,
+                        child: CupertinoButton(
+                          borderRadius: BorderRadius.all(Radius.circular(0)),
+                          alignment: Alignment.center,
+                          child: isFetching
+                              ? Container(
+                                  height: 25,
+                                  width: 25,
+                                  child: CircularProgressIndicator.adaptive(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                        kTextColorInv),
+                                  ),
+                                )
+                              : Text(
+                                  "Entrar",
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                          pressedOpacity: 0.8,
+                          onPressed: () async {
+                            FocusScopeNode currentFocus =
+                                FocusScope.of(context);
+                            if (_formkey.currentState!.validate()) {
+                              setState(() {
+                                isFetching = true;
+                              });
+                              await login(_emailController.text,
+                                  _passwordController.text, context);
+                              setState(() {
+                                isFetching = false;
+                              });
+                              if (!currentFocus.hasPrimaryFocus) {
+                                currentFocus.unfocus();
+                              }
+                            }
+                            await Future.delayed(Duration(seconds: 2));
+                          },
+                          color: kPrimaryColor,
                         ),
                       ),
-                    ),
-                    onTap: () async {
-                      FocusScopeNode currentFocus = FocusScope.of(context);
-                      if (_formkey.currentState!.validate()) {
-                        login(_emailController.text, _passwordController.text,
-                            context);
-                        if (!currentFocus.hasPrimaryFocus) {
-                          currentFocus.unfocus();
-                        }
-                      }
-
-                      //Navigator.pushReplacement(
-                      //  context,
-                      //  MaterialPageRoute(
-                      //    builder: (context) => HomeScreen(),
-                      //  ),
-                      //);
-                    },
+                    ],
                   ),
+
                   SizedBox(
                     height: 25,
                   ),

@@ -1,11 +1,9 @@
 // ignore_for_file: unused_local_variable
 
 import 'dart:convert';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test_project/providers/authProvider.dart';
 import 'package:flutter_test_project/screens/home/HomeScreen.dart';
-import 'package:flutter_test_project/screens/loading/loadingScreen.dart';
 import 'package:flutter_test_project/screens/login/loginScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -13,7 +11,9 @@ import 'package:http/http.dart' as http;
 
 const String URL_BASE = "http://10.0.2.2:8888";
 
-void login(String email, String senha, BuildContext context) async {
+// login
+
+Future<void> login(String email, String senha, BuildContext context) async {
   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
   var url = Uri.parse("${URL_BASE}/auth/login/");
   var userProvider = Provider.of<UserProvider>(context, listen: false);
@@ -27,14 +27,25 @@ void login(String email, String senha, BuildContext context) async {
     await sharedPreferences.setString(
         'token', "Token ${jsonDecode(response.body)['token']}");
     userProvider.setUser(response.body);
-    navigator.pushReplacement(
-        MaterialPageRoute(builder: (context) => LoadingScreen()));
+    navigator
+        .pushReplacement(MaterialPageRoute(builder: (context) => HomeScreen()));
   } else {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          jsonDecode(response.body)['message'],
+          textAlign: TextAlign.center,
+        ),
+        backgroundColor: Colors.red,
+      ),
+    );
     print(jsonDecode(response.body));
   }
 }
 
-void checkToken(BuildContext context) async {
+// verify token
+
+Future<void> checkToken(BuildContext context) async {
   var url = Uri.parse("${URL_BASE}/auth/verify/");
   var userProvider = Provider.of<UserProvider>(context, listen: false);
   final navigator = Navigator.of(context);
