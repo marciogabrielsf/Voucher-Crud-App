@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test_project/screens/home/HomeScreen.dart';
+import 'package:flutter_test_project/providers/authProvider.dart';
 import 'package:flutter_test_project/screens/loading/loadingScreen.dart';
-import 'package:flutter_test_project/screens/login/loginScreen.dart';
+import 'package:provider/provider.dart';
+
 import 'constants.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => UserProvider()),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

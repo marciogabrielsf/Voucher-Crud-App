@@ -141,17 +141,10 @@ class _BodyState extends State<Body> {
                     onTap: () async {
                       FocusScopeNode currentFocus = FocusScope.of(context);
                       if (_formkey.currentState!.validate()) {
-                        bool loggedIn = await login(
-                            _emailController.text, _passwordController.text);
+                        login(_emailController.text, _passwordController.text,
+                            context);
                         if (!currentFocus.hasPrimaryFocus) {
                           currentFocus.unfocus();
-                        }
-                        if (loggedIn) {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => HomeScreen()),
-                          );
                         }
                       }
 

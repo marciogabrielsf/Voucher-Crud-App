@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test_project/api/fetchLogin.dart';
+import 'package:flutter_test_project/providers/authProvider.dart';
 import 'package:flutter_test_project/screens/home/components/util/cardWidget.dart';
+import 'package:flutter_test_project/screens/loading/loadingScreen.dart';
+import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeBody extends StatefulWidget {
@@ -14,6 +18,7 @@ class _HomeBodyState extends State<HomeBody> {
 
   @override
   Widget build(BuildContext context) {
+    var loggedUser = Provider.of<UserProvider>(context).user;
     return SafeArea(
         child: SingleChildScrollView(
       child: Column(
@@ -28,10 +33,21 @@ class _HomeBodyState extends State<HomeBody> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('Olá,', style: TextStyle(fontSize: 24)),
-                    Text(
-                      "Marcondes",
-                      style:
-                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    GestureDetector(
+                      child: Text(
+                        loggedUser.firstName,
+                        style: TextStyle(
+                            fontSize: 24, fontWeight: FontWeight.bold),
+                      ),
+                      onTap: () {
+                        logOut();
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LoadingScreen(),
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),

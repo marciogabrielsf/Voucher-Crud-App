@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test_project/api/fetchLogin.dart';
 import 'package:flutter_test_project/constants.dart';
+import 'package:flutter_test_project/models/User.dart';
 import 'package:flutter_test_project/screens/home/HomeScreen.dart';
 import 'package:flutter_test_project/screens/login/loginScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -16,21 +18,13 @@ class _LoadingScreenState extends State<LoadingScreen> {
   void initState() {
     super.initState();
     verificarToken().then(
-      (value) {
+      (value) async {
         if (value) {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => HomeScreen(),
-            ),
-          );
+          checkToken(context);
         } else {
+          // nao tem token vai pra login
           Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => LoginScreen(),
-            ),
-          );
+              context, MaterialPageRoute(builder: (context) => LoginScreen()));
         }
       },
     );
