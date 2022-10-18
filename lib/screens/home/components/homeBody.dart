@@ -96,6 +96,7 @@ class _HomeBodyState extends State<HomeBody> {
               dotHeight: 12,
             ),
           ),
+
           SizedBox(
             height: 25,
           ),

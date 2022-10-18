@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test_project/api/fetchLogin.dart';
 import 'package:flutter_test_project/constants.dart';
-import 'package:flutter_test_project/models/User.dart';
-import 'package:flutter_test_project/screens/home/HomeScreen.dart';
 import 'package:flutter_test_project/screens/login/loginScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../api/checkToken.dart';
 
 class LoadingScreen extends StatefulWidget {
   const LoadingScreen({super.key});

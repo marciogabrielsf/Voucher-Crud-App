@@ -8,9 +8,7 @@ class SignUpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: BackButton(
-          color: Colors.black,
-        ),
+        leading: BackButton(),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
