@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+const String URL_BASE = "http://10.0.2.2:8888";
+
 const kPrimaryColor = Color(0xFF000000);
 const kSecondaryColor = Color(0xFF999999);
 const kTextColor = Color(0xFF000000);
