@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -33,7 +34,7 @@ Future<void> checkToken(BuildContext context) async {
     sharedPreferences.clear();
     navigator.pushReplacement(
         MaterialPageRoute(builder: (context) => LoginScreen()));
-  } catch (err) {
-    print(err);
+  } on SocketException catch (e) {
+    print(e.message);
   }
 }

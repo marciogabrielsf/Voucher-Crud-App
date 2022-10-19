@@ -1,10 +1,22 @@
+// packages
 import 'package:flutter/material.dart';
-import 'package:flutter_test_project/api/fetchLogin.dart';
-import 'package:flutter_test_project/providers/authProvider.dart';
+
+// components
+
+import 'package:flutter_test_project/screens/home/components/util/buttonWithLabel.dart';
 import 'package:flutter_test_project/screens/home/components/util/cardWidget.dart';
+import 'package:flutter_test_project/screens/home/components/util/lastAdded.dart';
 import 'package:flutter_test_project/screens/loading/loadingScreen.dart';
-import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+// functions
+
+import 'package:flutter_test_project/api/fetchLogin.dart';
+
+// providers
+
+import 'package:flutter_test_project/providers/authProvider.dart';
+import 'package:provider/provider.dart';
 
 class HomeBody extends StatefulWidget {
   const HomeBody({super.key});
@@ -101,52 +113,17 @@ class _HomeBodyState extends State<HomeBody> {
             height: 25,
           ),
 
-          //buttons
+          //Voucher Button
 
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Container(
-                      padding: EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 20,
-                            color: Color(0x39000000),
-                          ),
-                        ],
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(12),
-                        ),
-                      ),
-                      child: Icon(Icons.currency_exchange, size: 50),
-                    ),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Vouchers",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
-                        ),
-                        Text(
-                          "Vouchers mensais, tabelas",
-                          style: TextStyle(fontSize: 14),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                Icon(Icons.arrow_forward_ios)
-              ],
+            child: ButtonWithLabel(
+              icon: Icon(
+                Icons.currency_exchange,
+                size: 50,
+              ),
+              mainText: 'Vouchers',
+              subText: 'Vouchers mensais, tabelas',
             ),
           ),
 
@@ -154,52 +131,18 @@ class _HomeBodyState extends State<HomeBody> {
             height: 20,
           ),
 
+          // Statistics Button
+
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Container(
-                      padding: EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 20,
-                            color: Color(0x39000000),
-                          ),
-                        ],
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(12),
-                        ),
-                      ),
-                      child: Icon(Icons.insert_chart, size: 50),
-                    ),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Estatísticas",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
-                        ),
-                        Text(
-                          "Faturamentos, Descontos",
-                          style: TextStyle(fontSize: 14),
-                        ),
-                      ],
-                    ),
-                  ],
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: ButtonWithLabel(
+                icon: Icon(
+                  Icons.insert_chart,
+                  size: 50,
                 ),
-                Icon(Icons.arrow_forward_ios)
-              ],
-            ),
-          ),
+                mainText: "Estatísticas",
+                subText: "Valores, Descontos",
+              )),
 
           // last registries
 
@@ -209,29 +152,7 @@ class _HomeBodyState extends State<HomeBody> {
 
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: Row(
-              children: [
-                Text(
-                  "Últimos Registros",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: Container(
-              height: 200,
-              decoration: BoxDecoration(
-                color: Color(0xFFC8C8C8),
-                borderRadius: BorderRadius.all(
-                  Radius.circular(12),
-                ),
-              ),
-            ),
+            child: LastVoucherAdded(),
           ),
 
           SizedBox(

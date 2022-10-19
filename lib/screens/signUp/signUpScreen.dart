@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test_project/constants.dart';
 import 'package:flutter_test_project/screens/signUp/Components/signUpBody.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -8,7 +9,9 @@ class SignUpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: BackButton(),
+        leading: BackButton(
+          color: kPrimaryColor,
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),

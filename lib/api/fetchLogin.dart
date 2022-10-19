@@ -2,6 +2,7 @@
 
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_test_project/providers/authProvider.dart';
 import 'package:flutter_test_project/screens/home/HomeScreen.dart';
@@ -54,8 +55,8 @@ Future<void> login(String email, String senha, BuildContext context) async {
         backgroundColor: Colors.red,
       ),
     );
-  } catch (err) {
-    print(err);
+  } on SocketException catch (e) {
+    print(e.message);
   }
 }
 

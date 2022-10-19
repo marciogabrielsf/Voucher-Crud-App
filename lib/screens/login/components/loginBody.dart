@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test_project/api/fetchLogin.dart';
 import 'package:flutter_test_project/constants.dart';
-import 'package:flutter_test_project/screens/signUp/signUpScreen.dart';
+import 'package:flutter_test_project/screens/login/components/joinNowButton.dart';
 import 'package:flutter/cupertino.dart';
 
 class Body extends StatefulWidget {
@@ -124,76 +124,54 @@ class _BodyState extends State<Body> {
                     height: 25,
                   ),
 
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Container(
-                        height: 60,
-                        child: CupertinoButton(
-                          borderRadius: BorderRadius.all(Radius.circular(0)),
-                          alignment: Alignment.center,
-                          child: isFetching
-                              ? Container(
-                                  height: 25,
-                                  width: 25,
-                                  child: CircularProgressIndicator.adaptive(
-                                    valueColor: AlwaysStoppedAnimation<Color>(
-                                        kTextColorInv),
-                                  ),
-                                )
-                              : Text(
-                                  "Entrar",
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                          pressedOpacity: 0.8,
-                          onPressed: () async {
-                            FocusScopeNode currentFocus =
-                                FocusScope.of(context);
-                            if (_formkey.currentState!.validate()) {
-                              setState(() {
-                                isFetching = true;
-                              });
-                              await login(_emailController.text,
-                                  _passwordController.text, context);
-                              setState(() {
-                                isFetching = false;
-                              });
-                              if (!currentFocus.hasPrimaryFocus) {
-                                currentFocus.unfocus();
-                              }
-                            }
-                            await Future.delayed(Duration(seconds: 2));
-                          },
-                          color: kPrimaryColor,
-                        ),
-                      ),
-                    ],
+                  // login button
+
+                  Container(
+                    width: double.infinity,
+                    height: 60,
+                    child: CupertinoButton(
+                      borderRadius: BorderRadius.all(Radius.circular(0)),
+                      alignment: Alignment.center,
+                      child: isFetching
+                          ? Container(
+                              height: 25,
+                              width: 25,
+                              child: CircularProgressIndicator.adaptive(
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                    kTextColorInv),
+                              ),
+                            )
+                          : Text(
+                              "Entrar",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                      pressedOpacity: 0.8,
+                      onPressed: () async {
+                        FocusScopeNode currentFocus = FocusScope.of(context);
+                        if (_formkey.currentState!.validate()) {
+                          setState(() {
+                            isFetching = true;
+                          });
+                          await login(_emailController.text,
+                              _passwordController.text, context);
+                          setState(() {
+                            isFetching = false;
+                          });
+                          if (!currentFocus.hasPrimaryFocus) {
+                            currentFocus.unfocus();
+                          }
+                        }
+                      },
+                      color: kPrimaryColor,
+                    ),
                   ),
 
                   SizedBox(
                     height: 25,
                   ),
 
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text("Precisa de uma conta? "),
-                      GestureDetector(
-                        child: Text(
-                          "Junte-se agora.",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SignUpScreen(),
-                            ),
-                          );
-                        },
-                      ),
-                    ],
-                  ),
+                  JoinNowButton(),
+
                   SizedBox(
                     height: 50,
                   ),
