@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../../constants.dart';
+import '../constants.dart';
 
 class CustomInput extends StatelessWidget {
   final Color? textColor;
@@ -9,7 +9,8 @@ class CustomInput extends StatelessWidget {
   final String? placeholder;
   final Color? backgroundColor;
   final bool? obscureText;
-  final TextEditingController controller;
+  final bool? autofocus;
+  final TextEditingController? controller;
   final TextInputType? keyboardType;
   final List<TextInputFormatter>? inputFormatters;
   final String? Function(String?)? validator;
@@ -21,10 +22,11 @@ class CustomInput extends StatelessWidget {
     this.placeholder,
     this.placeholderColor,
     this.obscureText,
-    required this.controller,
+    this.controller,
     this.keyboardType,
     this.inputFormatters,
     this.validator,
+    this.autofocus,
   }) : super(key: key);
 
   @override
@@ -37,6 +39,7 @@ class CustomInput extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: TextFormField(
+          autofocus: autofocus ?? false,
           validator: validator,
           inputFormatters: inputFormatters,
           keyboardType: keyboardType,

@@ -43,7 +43,6 @@ Future<void> login(String email, String senha, BuildContext context) async {
           backgroundColor: Colors.red,
         ),
       );
-      print(jsonDecode(response.body));
     }
   } on TimeoutException catch (_) {
     ScaffoldMessenger.of(context).showSnackBar(

@@ -1,5 +1,6 @@
 // packages
 import 'package:flutter/material.dart';
+import 'package:flutter_test_project/modals/addVoucherModal/addVoucherModal.dart';
 
 // components
 
@@ -7,6 +8,7 @@ import 'package:flutter_test_project/screens/home/components/util/buttonWithLabe
 import 'package:flutter_test_project/screens/home/components/util/cardWidget.dart';
 import 'package:flutter_test_project/screens/home/components/util/lastAdded.dart';
 import 'package:flutter_test_project/screens/loading/loadingScreen.dart';
+import 'package:flutter_test_project/screens/login/loginScreen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 // functions
@@ -56,7 +58,7 @@ class _HomeBodyState extends State<HomeBody> {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => LoadingScreen(),
+                            builder: (context) => LoginScreen(),
                           ),
                         );
                       },
@@ -75,7 +77,7 @@ class _HomeBodyState extends State<HomeBody> {
               controller: _pageController,
               children: [
                 CardWidget(
-                  balance: "R\$ 15.375,10",
+                  balance: "R\$ 15.430,10",
                   color: Color(0xFF1ED800),
                   month: "Neste Mês",
                 ),
