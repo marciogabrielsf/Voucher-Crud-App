@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test_project/modals/addVoucherModal/steps/step3.dart';
+import 'package:provider/provider.dart';
 
 import '../../../components/customInput.dart';
 import '../../../constants.dart';
+import '../../../providers/addVoucherProvider.dart';
 
 class VoucherStep2 extends StatefulWidget {
   VoucherStep2({super.key});
@@ -16,6 +18,10 @@ class _VoucherStep2State extends State<VoucherStep2> {
   final _orderNumberController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    // providers
+    var voucherProvider = Provider.of<VoucherProvider>(context, listen: false);
+
+    // body
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -72,6 +78,8 @@ class _VoucherStep2State extends State<VoucherStep2> {
                   FloatingActionButton(
                     heroTag: "Step2",
                     onPressed: () {
+                      voucherProvider
+                          .setVoucherOrderNumber(_orderNumberController.text);
                       Navigator.push(
                         context,
                         CupertinoPageRoute(

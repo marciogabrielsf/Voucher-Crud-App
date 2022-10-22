@@ -1,27 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_test_project/modals/addVoucherModal/steps/step5.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:flutter_test_project/modals/addVoucherModal/steps/step6.dart';
 import 'package:provider/provider.dart';
 
 import '../../../components/customInput.dart';
 import '../../../constants.dart';
 import '../../../providers/addVoucherProvider.dart';
 
-class VoucherStep4 extends StatefulWidget {
-  VoucherStep4({super.key});
+class VoucherStep5 extends StatefulWidget {
+  VoucherStep5({super.key});
 
   @override
-  State<VoucherStep4> createState() => _VoucherStep4State();
+  State<VoucherStep5> createState() => _VoucherStep5State();
 }
 
-class _VoucherStep4State extends State<VoucherStep4> {
-  var maskFormatter = new MaskTextInputFormatter(
-      mask: '##/##/####',
-      filter: {"#": RegExp(r'[0-9]')},
-      type: MaskAutoCompletionType.lazy);
-
-  final _dateController = TextEditingController();
+class _VoucherStep5State extends State<VoucherStep5> {
+  final _companyController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     var voucherProvider = Provider.of<VoucherProvider>(context, listen: false);
@@ -47,12 +41,7 @@ class _VoucherStep4State extends State<VoucherStep4> {
                       height: 20,
                     ),
                     Text(
-                      "Qual a data da",
-                      style:
-                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      "corrida?",
+                      "Qual a empresa que solicitou a corrida?",
                       style:
                           TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                     ),
@@ -60,21 +49,20 @@ class _VoucherStep4State extends State<VoucherStep4> {
                       height: 20,
                     ),
                     Text(
-                      "Qual o dia em que a corrida",
+                      "Qual a empresa que fez o pedido",
                       style: TextStyle(fontSize: 18),
                     ),
                     Text(
-                      "aconteceu?",
+                      "da corrida?",
                       style: TextStyle(fontSize: 18),
                     ),
                     SizedBox(
                       height: 20,
                     ),
                     CustomInput(
-                      controller: _dateController,
-                      keyboardType: TextInputType.datetime,
-                      placeholder: '00/00/0000',
-                      inputFormatters: [maskFormatter],
+                      controller: _companyController,
+                      keyboardType: TextInputType.name,
+                      placeholder: 'Empresa',
                       autofocus: true,
                     ),
                   ],
@@ -83,13 +71,14 @@ class _VoucherStep4State extends State<VoucherStep4> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     FloatingActionButton(
-                      heroTag: "Step4",
+                      heroTag: "Step5",
                       onPressed: () {
-                        voucherProvider.setVoucherDate(_dateController.text);
+                        voucherProvider
+                            .setVoucherCompany(_companyController.text);
                         Navigator.push(
                           context,
                           CupertinoPageRoute(
-                            builder: (context) => VoucherStep5(),
+                            builder: (context) => VoucherStep6(),
                           ),
                         );
                       },

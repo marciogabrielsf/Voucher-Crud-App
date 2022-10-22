@@ -1,13 +1,11 @@
 // packages
 import 'package:flutter/material.dart';
-import 'package:flutter_test_project/modals/addVoucherModal/addVoucherModal.dart';
 
 // components
 
 import 'package:flutter_test_project/screens/home/components/util/buttonWithLabel.dart';
 import 'package:flutter_test_project/screens/home/components/util/cardWidget.dart';
 import 'package:flutter_test_project/screens/home/components/util/lastAdded.dart';
-import 'package:flutter_test_project/screens/loading/loadingScreen.dart';
 import 'package:flutter_test_project/screens/login/loginScreen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 

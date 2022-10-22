@@ -2,8 +2,10 @@ import 'package:currency_text_input_formatter/currency_text_input_formatter.dart
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test_project/modals/addVoucherModal/steps/step4.dart';
+import 'package:provider/provider.dart';
 import '../../../components/customInput.dart';
 import '../../../constants.dart';
+import '../../../providers/addVoucherProvider.dart';
 
 class VoucherStep3 extends StatefulWidget {
   VoucherStep3({super.key});
@@ -20,6 +22,12 @@ class _VoucherStep3State extends State<VoucherStep3> {
 
   @override
   Widget build(BuildContext context) {
+    // providers
+
+    var voucherProvider = Provider.of<VoucherProvider>(context, listen: false);
+
+    //body
+
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -41,7 +49,7 @@ class _VoucherStep3State extends State<VoucherStep3> {
                     height: 20,
                   ),
                   Text(
-                    "Quanto Vale o",
+                    "Qual o valor do",
                     style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                   ),
                   Text(
@@ -77,6 +85,7 @@ class _VoucherStep3State extends State<VoucherStep3> {
                   FloatingActionButton(
                     heroTag: "Step3",
                     onPressed: () {
+                      voucherProvider.setVoucherValue(_valueController.text);
                       Navigator.push(
                         context,
                         CupertinoPageRoute(

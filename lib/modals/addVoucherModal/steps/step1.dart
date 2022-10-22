@@ -1,13 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test_project/modals/addVoucherModal/steps/step2.dart';
+import 'package:flutter_test_project/providers/addVoucherProvider.dart';
+import 'package:provider/provider.dart';
 
 import '../../../components/customInput.dart';
 import '../../../constants.dart';
 
 class VoucherStep1 extends StatefulWidget {
-  VoucherStep1({super.key, required this.firstContext});
-  final BuildContext firstContext;
+  VoucherStep1({
+    super.key,
+  });
 
   @override
   State<VoucherStep1> createState() => _VoucherStep1State();
@@ -15,9 +18,10 @@ class VoucherStep1 extends StatefulWidget {
 
 class _VoucherStep1State extends State<VoucherStep1> {
   final _voucherNumberController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
+    var voucherProvider = Provider.of<VoucherProvider>(context, listen: false);
+
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.all(25.0),
@@ -31,7 +35,7 @@ class _VoucherStep1State extends State<VoucherStep1> {
                   GestureDetector(
                     child: Icon(Icons.close),
                     onTap: () {
-                      Navigator.pop(widget.firstContext);
+                      Navigator.of(context, rootNavigator: true).pop();
                     },
                   ),
                   SizedBox(
@@ -73,6 +77,8 @@ class _VoucherStep1State extends State<VoucherStep1> {
                   FloatingActionButton(
                     heroTag: "Step1",
                     onPressed: () {
+                      voucherProvider
+                          .setVoucherNumber(_voucherNumberController.text);
                       Navigator.push(
                         context,
                         CupertinoPageRoute(
