@@ -38,7 +38,7 @@ class _VoucherStep6State extends State<VoucherStep6> {
                     height: 20,
                   ),
                   Text(
-                    "Revise dos dados do seu voucher:",
+                    "Revise os dados do seu voucher:",
                     style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                   ),
                   dataItem(

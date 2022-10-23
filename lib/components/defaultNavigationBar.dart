@@ -20,7 +20,9 @@ class DefaultBottomNavigationState extends State<DefaultBottomNavigation> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {});
+                },
                 icon: Icon(
                   Icons.home,
                   size: 32,
