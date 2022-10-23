@@ -1,16 +1,44 @@
-# flutter_test_project
+# Voucher CRUD app
 
-A new Flutter project.
+<img src="exemplo-image.png" alt="exemplo imagem">
 
-## Getting Started
+> App Running.
+### Ajustes e melhorias
 
-This project is a starting point for a Flutter application.
+O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
 
-A few resources to get you started if this is your first Flutter project:
+- [x] UI Design
+- [x] JWT Auth
+- [x] Create and List Vouchers
+- [ ] Update and Delete Vouchers
+- [ ] Bug Fixes
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 💻 Pré-requisitos
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Antes de começar, verifique se você atendeu aos seguintes requisitos:
+* Flutter: ^3.3.5
+
+## 🚀 Instalando o Voucher Crud
+
+Para instalar o Voucher Crud, siga estas etapas:
+
+1. Instale o Flutter
+2. Clone o repositório
+3. Instale as dependencias:
+```
+flutter pub get
+```
+4. Inicie o debug
+
+## ☕ Usando o Voucher CRUD
+
+Para usar Voucher CRUD você precisa ter o android studio com um emulador instalado.
+
+Adicione comandos de execução e exemplos que você acha que os usuários acharão úteis. Fornece uma referência de opções para pontos de bônus!
+
+
+## 📝 Licença
+
+Esse projeto está sob licença. Veja o arquivo [LICENÇA](LICENSE.md) para mais detalhes.
+
+[⬆ Voltar ao topo](#nome-do-projeto)<br>
