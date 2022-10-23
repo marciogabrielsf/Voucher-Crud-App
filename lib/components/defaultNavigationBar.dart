@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test_project/screens/home/HomeScreen.dart';
 
 class DefaultBottomNavigation extends StatefulWidget {
   const DefaultBottomNavigation({
@@ -21,7 +22,11 @@ class DefaultBottomNavigationState extends State<DefaultBottomNavigation> {
           children: [
             IconButton(
                 onPressed: () {
-                  setState(() {});
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomeScreen()),
+                    (Route<dynamic> route) => false,
+                  );
                 },
                 icon: Icon(
                   Icons.home,

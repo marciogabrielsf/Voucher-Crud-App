@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_test_project/api/createVoucher.dart';
 import 'package:flutter_test_project/constants.dart';
 import 'package:provider/provider.dart';
 
@@ -90,18 +91,14 @@ class dataItem extends StatelessWidget {
   }
 }
 
-class saveBottomSheet extends StatefulWidget {
+class saveBottomSheet extends StatelessWidget {
   const saveBottomSheet({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<saveBottomSheet> createState() => _saveBottomSheetState();
-}
-
-class _saveBottomSheetState extends State<saveBottomSheet> {
-  @override
   Widget build(BuildContext context) {
+    var voucherProvider = Provider.of<VoucherProvider>(context).voucher;
     return Container(
       padding: EdgeInsets.symmetric(vertical: 50, horizontal: 25),
       color: kBackgroundColor,
@@ -126,7 +123,13 @@ class _saveBottomSheetState extends State<saveBottomSheet> {
               ],
             ),
             onPressed: () {
-              Navigator.of(context, rootNavigator: true).pop();
+              createVoucher(
+                  voucherProvider.voucherNumber,
+                  voucherProvider.value,
+                  voucherProvider.date,
+                  voucherProvider.orderNumber,
+                  voucherProvider.company,
+                  context);
             },
           ),
         ],

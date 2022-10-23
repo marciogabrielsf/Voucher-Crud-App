@@ -25,7 +25,6 @@ class _VoucherStep3State extends State<VoucherStep3> {
     // providers
 
     var voucherProvider = Provider.of<VoucherProvider>(context, listen: false);
-
     //body
 
     return Scaffold(

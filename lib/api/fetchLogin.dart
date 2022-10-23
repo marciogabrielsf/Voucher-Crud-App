@@ -10,6 +10,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
+import '../components/scaffoldedMessage.dart';
 import '../constants.dart';
 
 // login
@@ -34,26 +35,14 @@ Future<void> login(String email, String senha, BuildContext context) async {
       navigator.pushReplacement(
           MaterialPageRoute(builder: (context) => HomeScreen()));
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            jsonDecode(response.body)['message'],
-            textAlign: TextAlign.center,
-          ),
-          backgroundColor: Colors.red,
-        ),
-      );
+      showBottomMessage(
+          context, jsonDecode(response.body)['message'], Colors.red);
     }
   } on TimeoutException catch (_) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          'O Servidor não está respondendo, tente novamente mais tarde.',
-          textAlign: TextAlign.center,
-        ),
-        backgroundColor: Colors.red,
-      ),
-    );
+    showBottomMessage(
+        context,
+        "Não foi possível se comunicar com o servidor, verifique sua conexão ou tente novamente mais tarde.",
+        Colors.red);
   } on SocketException catch (e) {
     print(e.message);
   }

@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
-class LastVoucherAdded extends StatelessWidget {
+class LastVoucherAdded extends StatefulWidget {
+  final Future<List> data;
+
   const LastVoucherAdded({
     Key? key,
+    required this.data,
   }) : super(key: key);
 
+  @override
+  State<LastVoucherAdded> createState() => _LastVoucherAddedState();
+}
+
+class _LastVoucherAddedState extends State<LastVoucherAdded> {
+  NumberFormat numberFormat =
+      NumberFormat.simpleCurrency(locale: 'pt-BR', decimalDigits: 2);
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -29,21 +40,44 @@ class LastVoucherAdded extends StatelessWidget {
               Radius.circular(12),
             ),
           ),
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.all(20),
-              child: Column(
-                children: [
-                  LastAddedItem(),
-                  LastAddedItem(),
-                  LastAddedItem(),
-                  LastAddedItem(),
-                  LastAddedItem(),
-                  LastAddedItem(),
-                  LastAddedItem(),
-                  LastAddedItem(),
-                ],
-              ),
+          child: Padding(
+            padding: EdgeInsets.all(20),
+            child: FutureBuilder<List>(
+              future: widget.data,
+              builder: (context, snapshot) {
+                if (snapshot.hasError) {
+                  return Center(
+                    child: Text('erro ao carregar vouchers'),
+                  );
+                }
+                if (snapshot.hasData) {
+                  if (snapshot.data!.length > 0) {
+                    return ListView.builder(
+                      itemCount: snapshot.data!.length,
+                      itemBuilder: (context, index) {
+                        return LastAddedItem(
+                          value: numberFormat
+                              .format(snapshot.data![index]['value']),
+                          order:
+                              snapshot.data![index]['orderNumber'].toString(),
+                          company: snapshot.data![index]['company'],
+                          date: DateFormat(DateFormat.YEAR_MONTH_DAY, 'pt_Br')
+                              .format(DateTime.parse(
+                                  snapshot.data![index]['voucherDate'])),
+                        );
+                      },
+                    );
+                  } else {
+                    return Center(
+                      child: Text('Não há nenhum voucher adicionado'),
+                    );
+                  }
+                }
+
+                return Center(
+                  child: CircularProgressIndicator.adaptive(),
+                );
+              },
             ),
           ),
         ),
@@ -53,8 +87,16 @@ class LastVoucherAdded extends StatelessWidget {
 }
 
 class LastAddedItem extends StatelessWidget {
+  final String value;
+  final String order;
+  final String date;
+  final String company;
   const LastAddedItem({
     Key? key,
+    required this.value,
+    required this.order,
+    required this.date,
+    required this.company,
   }) : super(key: key);
 
   @override
@@ -72,7 +114,7 @@ class LastAddedItem extends StatelessWidget {
                   color: Color(0xFF616161)),
             ),
             Text(
-              'R\$ 198,00',
+              value,
               style: TextStyle(fontSize: 16, color: Color(0x0FF138800)),
             )
           ],
@@ -81,11 +123,11 @@ class LastAddedItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Eneva - 5405',
+              '$company - $order',
               style: TextStyle(fontSize: 12, color: Color(0xFF616161)),
             ),
             Text(
-              '14 de outubro de 2022',
+              '$date',
               style: TextStyle(fontSize: 12, color: Color(0xFF616161)),
             )
           ],

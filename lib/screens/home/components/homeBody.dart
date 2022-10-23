@@ -1,5 +1,6 @@
 // packages
 import 'package:flutter/material.dart';
+import 'package:flutter_test_project/api/fetchVouchers.dart';
 
 // components
 
@@ -19,7 +20,8 @@ import 'package:flutter_test_project/providers/authProvider.dart';
 import 'package:provider/provider.dart';
 
 class HomeBody extends StatefulWidget {
-  const HomeBody({super.key});
+  final Future<List> voucherData;
+  const HomeBody({super.key, required this.voucherData});
 
   @override
   State<HomeBody> createState() => _HomeBodyState();
@@ -27,6 +29,11 @@ class HomeBody extends StatefulWidget {
 
 class _HomeBodyState extends State<HomeBody> {
   final _pageController = PageController();
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -152,7 +159,9 @@ class _HomeBodyState extends State<HomeBody> {
 
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: LastVoucherAdded(),
+            child: LastVoucherAdded(
+              data: widget.voucherData,
+            ),
           ),
 
           SizedBox(
