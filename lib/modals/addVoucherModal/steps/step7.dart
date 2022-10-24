@@ -22,9 +22,9 @@ class _VoucherStep7State extends State<VoucherStep7> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               GestureDetector(
-                child: Icon(Icons.arrow_back_ios),
+                child: Icon(Icons.close),
                 onTap: () {
-                  Navigator.pop(context);
+                  Navigator.of(context, rootNavigator: true).pop();
                 },
               ),
               SizedBox(

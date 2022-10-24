@@ -33,7 +33,7 @@ class _LastVoucherAddedState extends State<LastVoucherAdded> {
         ),
         Container(
           width: double.infinity,
-          height: 200,
+          height: 215,
           decoration: BoxDecoration(
             color: Color(0xFFC8C8C8),
             borderRadius: BorderRadius.all(
@@ -56,6 +56,8 @@ class _LastVoucherAddedState extends State<LastVoucherAdded> {
                       itemCount: snapshot.data!.length,
                       itemBuilder: (context, index) {
                         return LastAddedItem(
+                          voucherNumber:
+                              snapshot.data![index]['voucherNumber'].toString(),
                           value: numberFormat
                               .format(snapshot.data![index]['value']),
                           order:
@@ -91,12 +93,14 @@ class LastAddedItem extends StatelessWidget {
   final String order;
   final String date;
   final String company;
+  final String voucherNumber;
   const LastAddedItem({
     Key? key,
     required this.value,
     required this.order,
     required this.date,
     required this.company,
+    required this.voucherNumber,
   }) : super(key: key);
 
   @override
@@ -107,7 +111,7 @@ class LastAddedItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Voucher',
+              'Voucher - $voucherNumber',
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 16,

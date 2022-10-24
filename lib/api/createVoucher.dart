@@ -32,8 +32,6 @@ Future<void> createVoucher(
   var date = new DateTime(2022, 11, 10);
   var datetime = date.toIso8601String() + 'Z';
 
-  print(datetime);
-
   try {
     var response = await http
         .post(url,

@@ -42,11 +42,11 @@ class _BodyState extends State<Body> {
                   Row(
                     children: [
                       Text(
-                        "Bem Vindo A ",
+                        "Bem Vindo ao ",
                         style: TextStyle(fontSize: 20, color: kSecondaryColor),
                       ),
                       Text(
-                        "Design Company.",
+                        "VoucherLab.",
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 18,
