@@ -46,7 +46,7 @@ Future<void> createVoucher(
               "company": company,
               "voucherDate": datetime
             }))
-        .timeout(Duration(seconds: 20));
+        .timeout(Duration(seconds: 30));
 
     if (response.statusCode == 201) {
       Navigator.push(

@@ -14,7 +14,7 @@ Future<List<getVoucherModel>> fetchVouchers() async {
 
   try {
     var response = await http.get(url,
-        headers: {"authorization": "$token"}).timeout(Duration(seconds: 20));
+        headers: {"authorization": "$token"}).timeout(Duration(seconds: 30));
 
     if (response.statusCode == 200) {
       final body = json.decode(response.body)['vouchers'] as List<dynamic>;

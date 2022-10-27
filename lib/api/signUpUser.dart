@@ -24,7 +24,7 @@ Future<void> signUp(String email, String cpf, String name, String password,
             "cpf": cpf,
           }),
         )
-        .timeout(Duration(seconds: 15));
+        .timeout(Duration(seconds: 30));
 
     if (response.statusCode == 201) {
       showBottomMessage(

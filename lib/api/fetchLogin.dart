@@ -24,7 +24,7 @@ Future<void> login(String email, String senha, BuildContext context) async {
         .post(url,
             headers: {"content-type": "application/json"},
             body: jsonEncode({"email": email, "password": senha}))
-        .timeout(Duration(seconds: 15));
+        .timeout(Duration(seconds: 30));
 
     if (response.statusCode == 200) {
       await sharedPreferences.setString(
