@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test_project/api/fetchVouchers.dart';
+import 'package:flutter_test_project/models/get_Voucher_model.dart';
+import 'package:flutter_test_project/providers/getVoucherProvider.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class LastVoucherAdded extends StatefulWidget {
-  final Future<List> data;
-
   const LastVoucherAdded({
     Key? key,
-    required this.data,
   }) : super(key: key);
 
   @override
@@ -14,10 +15,10 @@ class LastVoucherAdded extends StatefulWidget {
 }
 
 class _LastVoucherAddedState extends State<LastVoucherAdded> {
-  NumberFormat numberFormat =
-      NumberFormat.simpleCurrency(locale: 'pt-BR', decimalDigits: 2);
   @override
   Widget build(BuildContext context) {
+    var voucherList = Provider.of<getVoucherProvider>(context);
+
     return Column(
       children: [
         Row(
@@ -42,38 +43,31 @@ class _LastVoucherAddedState extends State<LastVoucherAdded> {
           ),
           child: Padding(
             padding: EdgeInsets.all(20),
-            child: FutureBuilder<List>(
-              future: widget.data,
+            child: FutureBuilder(
+              future: voucherList.getVouchers(),
               builder: (context, snapshot) {
                 if (snapshot.hasError) {
                   return Center(
-                    child: Text('erro ao carregar vouchers'),
+                    child: Text('Erro'),
                   );
                 }
+
                 if (snapshot.hasData) {
                   if (snapshot.data!.length > 0) {
+                    var vouchers = snapshot.data as List<getVoucherModel>;
                     return ListView.builder(
-                      itemCount: snapshot.data!.length,
+                      itemCount: vouchers.length,
                       itemBuilder: (context, index) {
                         return LastAddedItem(
-                          voucherNumber:
-                              snapshot.data![index]['voucherNumber'].toString(),
-                          value: numberFormat
-                              .format(snapshot.data![index]['value']),
-                          order:
-                              snapshot.data![index]['orderNumber'].toString(),
-                          company: snapshot.data![index]['company'],
-                          date: DateFormat(DateFormat.YEAR_MONTH_DAY, 'pt_Br')
-                              .format(DateTime.parse(
-                                  snapshot.data![index]['voucherDate'])),
+                          voucher: vouchers[index],
                         );
                       },
                     );
-                  } else {
-                    return Center(
-                      child: Text('Não há nenhum voucher adicionado'),
-                    );
                   }
+                } else {
+                  return Center(
+                    child: Text('Não Há nenhum voucher Adicionado'),
+                  );
                 }
 
                 return Center(
@@ -89,36 +83,31 @@ class _LastVoucherAddedState extends State<LastVoucherAdded> {
 }
 
 class LastAddedItem extends StatelessWidget {
-  final String value;
-  final String order;
-  final String date;
-  final String company;
-  final String voucherNumber;
+  final getVoucherModel voucher;
   const LastAddedItem({
     Key? key,
-    required this.value,
-    required this.order,
-    required this.date,
-    required this.company,
-    required this.voucherNumber,
+    required this.voucher,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    NumberFormat numberFormat =
+        NumberFormat.simpleCurrency(locale: 'pt-BR', decimalDigits: 2);
+
     return Column(
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Voucher - $voucherNumber',
+              'Voucher - ${voucher.voucherNumber}',
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 16,
                   color: Color(0xFF616161)),
             ),
             Text(
-              value,
+              numberFormat.format(voucher.value),
               style: TextStyle(fontSize: 16, color: Color(0x0FF138800)),
             )
           ],
@@ -127,11 +116,12 @@ class LastAddedItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              '$company - $order',
+              '${voucher.company} - ${voucher.orderNumber}',
               style: TextStyle(fontSize: 12, color: Color(0xFF616161)),
             ),
             Text(
-              '$date',
+              DateFormat(DateFormat.YEAR_MONTH_DAY, 'pt-Br')
+                  .format(DateTime.parse(voucher.date ?? '')),
               style: TextStyle(fontSize: 12, color: Color(0xFF616161)),
             )
           ],

@@ -25,6 +25,7 @@ class VoucherListScreen extends StatelessWidget {
         },
         child: Icon(Icons.add_circle, size: 30),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: DefaultBottomNavigation(),
     );
   }

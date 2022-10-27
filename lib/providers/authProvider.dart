@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_test_project/models/User.dart';
+import 'package:flutter_test_project/models/user_model.dart';
 
 class UserProvider extends ChangeNotifier {
   User _user = User(

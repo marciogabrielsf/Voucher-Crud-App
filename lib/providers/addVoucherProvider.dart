@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_test_project/models/Voucher.dart';
+import 'package:flutter_test_project/models/add_voucher_model.dart';
 
 class VoucherProvider extends ChangeNotifier {
-  Voucher _voucher = Voucher(
+  VoucherModel _voucher = VoucherModel(
     company: '',
     date: '',
     orderNumber: '',
@@ -10,7 +10,7 @@ class VoucherProvider extends ChangeNotifier {
     voucherNumber: '',
   );
 
-  Voucher get voucher => _voucher;
+  VoucherModel get voucher => _voucher;
 
   void setVoucherCompany(String company) {
     _voucher.company = company;

@@ -8,6 +8,7 @@ import 'package:flutter_test_project/screens/home/components/util/buttonWithLabe
 import 'package:flutter_test_project/screens/home/components/util/cardWidget.dart';
 import 'package:flutter_test_project/screens/home/components/util/lastAdded.dart';
 import 'package:flutter_test_project/screens/login/loginScreen.dart';
+import 'package:flutter_test_project/screens/voucherList/voucherListScreen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 // functions
@@ -20,8 +21,7 @@ import 'package:flutter_test_project/providers/authProvider.dart';
 import 'package:provider/provider.dart';
 
 class HomeBody extends StatefulWidget {
-  final Future<List> voucherData;
-  const HomeBody({super.key, required this.voucherData});
+  const HomeBody({super.key});
 
   @override
   State<HomeBody> createState() => _HomeBodyState();
@@ -124,13 +124,21 @@ class _HomeBodyState extends State<HomeBody> {
 
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: ButtonWithLabel(
-              icon: Icon(
-                Icons.currency_exchange,
-                size: 50,
+            child: GestureDetector(
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => VoucherListScreen(),
+                ),
               ),
-              mainText: 'Vouchers',
-              subText: 'Vouchers mensais, tabelas',
+              child: ButtonWithLabel(
+                icon: Icon(
+                  Icons.currency_exchange,
+                  size: 50,
+                ),
+                mainText: 'Vouchers',
+                subText: 'Vouchers mensais, tabelas',
+              ),
             ),
           ),
 
@@ -159,9 +167,7 @@ class _HomeBodyState extends State<HomeBody> {
 
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: LastVoucherAdded(
-              data: widget.voucherData,
-            ),
+            child: LastVoucherAdded(),
           ),
 
           SizedBox(
