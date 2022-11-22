@@ -10,6 +10,7 @@ import 'package:http/http.dart' as http;
 
 import '../components/scaffoldedMessage.dart';
 import '../constants.dart';
+import '../providers/getVoucherProvider.dart';
 
 // login
 
@@ -41,14 +42,15 @@ Future<void> login(String email, String senha, BuildContext context) async {
         context,
         "Não foi possível se comunicar com o servidor, verifique sua conexão ou tente novamente mais tarde.",
         Colors.red);
-  } on SocketException catch (e) {
-    print(e.message);
   }
 }
 
 // verify token
 
-Future logOut() async {
+Future logOut(BuildContext context) async {
   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  var voucherList = Provider.of<getVoucherProvider>(context, listen: false);
+
+  voucherList.updateList([]);
   await sharedPreferences.clear();
 }

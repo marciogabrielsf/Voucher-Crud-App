@@ -1,6 +1,5 @@
 // packages
 import 'package:flutter/material.dart';
-import 'package:flutter_test_project/api/fetchVouchers.dart';
 
 // components
 
@@ -59,7 +58,7 @@ class _HomeBodyState extends State<HomeBody> {
                             fontSize: 24, fontWeight: FontWeight.bold),
                       ),
                       onTap: () {
-                        logOut();
+                        logOut(context);
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
@@ -131,13 +130,16 @@ class _HomeBodyState extends State<HomeBody> {
                   builder: (context) => VoucherListScreen(),
                 ),
               ),
-              child: ButtonWithLabel(
-                icon: Icon(
-                  Icons.currency_exchange,
-                  size: 50,
+              child: Container(
+                color: Colors.transparent,
+                child: ButtonWithLabel(
+                  icon: Icon(
+                    Icons.attach_money,
+                    size: 50,
+                  ),
+                  mainText: 'Vouchers',
+                  subText: 'Vouchers mensais, tabelas',
                 ),
-                mainText: 'Vouchers',
-                subText: 'Vouchers mensais, tabelas',
               ),
             ),
           ),
@@ -150,13 +152,24 @@ class _HomeBodyState extends State<HomeBody> {
 
           Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
-              child: ButtonWithLabel(
-                icon: Icon(
-                  Icons.insert_chart,
-                  size: 50,
+              child: GestureDetector(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => VoucherListScreen(),
+                  ),
                 ),
-                mainText: "Estatísticas",
-                subText: "Valores, Descontos",
+                child: Container(
+                  color: Colors.transparent,
+                  child: ButtonWithLabel(
+                    icon: Icon(
+                      Icons.insert_chart,
+                      size: 50,
+                    ),
+                    mainText: "Estatísticas",
+                    subText: "Valores, Descontos",
+                  ),
+                ),
               )),
 
           // last registries

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test_project/api/fetchVouchers.dart';
 import 'package:flutter_test_project/models/get_Voucher_model.dart';
 import 'package:flutter_test_project/providers/getVoucherProvider.dart';
 import 'package:intl/intl.dart';
@@ -63,11 +62,11 @@ class _LastVoucherAddedState extends State<LastVoucherAdded> {
                         );
                       },
                     );
+                  } else {
+                    return Center(
+                      child: Text('Não Há nenhum voucher Adicionado'),
+                    );
                   }
-                } else {
-                  return Center(
-                    child: Text('Não Há nenhum voucher Adicionado'),
-                  );
                 }
 
                 return Center(
@@ -108,7 +107,7 @@ class LastAddedItem extends StatelessWidget {
             ),
             Text(
               numberFormat.format(voucher.value),
-              style: TextStyle(fontSize: 16, color: Color(0x0FF138800)),
+              style: TextStyle(fontSize: 18, color: Color(0x0FF138800)),
             )
           ],
         ),
