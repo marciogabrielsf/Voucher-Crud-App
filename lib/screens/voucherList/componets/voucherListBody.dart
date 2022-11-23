@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test_project/components/LastAddedItem.dart';
+import 'package:flutter_test_project/models/add_voucher_model.dart';
+import 'package:flutter_test_project/models/get_Voucher_model.dart';
 
 class VoucherListBody extends StatefulWidget {
   const VoucherListBody({super.key});
@@ -8,6 +11,13 @@ class VoucherListBody extends StatefulWidget {
 }
 
 class _VoucherListBodyState extends State<VoucherListBody> {
+  getVoucherModel defaultVoucher = getVoucherModel(
+      company: 'Eneva',
+      date: new DateTime.now().toIso8601String(),
+      orderNumber: 5452,
+      value: 120,
+      voucherNumber: 10030);
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -83,6 +93,16 @@ class _VoucherListBodyState extends State<VoucherListBody> {
                 SizedBox(
                   height: 25,
                 ),
+                Container(
+                    child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25),
+                  child: Column(
+                    children: [
+                      LastAddedItem(voucher: defaultVoucher),
+                      LastAddedItem(voucher: defaultVoucher),
+                    ],
+                  ),
+                ))
               ],
             ),
           ),
