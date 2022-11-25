@@ -47,9 +47,10 @@ class LastAddedItem extends StatelessWidget {
             )
           ],
         ),
-        SizedBox(
+        Divider(
+          thickness: 1,
           height: 20,
-        )
+        ),
       ],
     );
   }

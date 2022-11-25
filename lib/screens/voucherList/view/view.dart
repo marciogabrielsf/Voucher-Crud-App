@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_test_project/Widgets/LastAddedItem.dart';
 import 'package:flutter_test_project/models/get_Voucher_model.dart';
+import 'package:flutter_test_project/screens/voucherList/widgets/VouchersBottomResume.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../../../providers/getVoucherProvider.dart';
@@ -12,23 +15,60 @@ class VoucherListBody extends StatefulWidget {
   State<VoucherListBody> createState() => _VoucherListBodyState();
 }
 
-class _VoucherListBodyState extends State<VoucherListBody> {
-  getVoucherModel defaultVoucher = getVoucherModel(
-      company: 'Eneva',
-      date: new DateTime.now().toIso8601String(),
-      orderNumber: 5452,
-      value: 120,
-      voucherNumber: 10030);
+class _VoucherListBodyState extends State<VoucherListBody>
+    with SingleTickerProviderStateMixin {
+  num ammount = 0;
+  num voucherQnt = 0;
+  int todayDay = DateTime.now().day;
+
+  late DateTime startDate;
+  late DateTime endDate;
+
+  void handleDateUp() {
+    startDate =
+        DateTime.utc(startDate.year, startDate.month + 1, startDate.day);
+    endDate = DateTime.utc(endDate.year, endDate.month + 1, endDate.day);
+  }
+
+  void handleDateDown() {
+    startDate =
+        DateTime.utc(startDate.year, startDate.month - 1, startDate.day);
+    endDate = DateTime.utc(endDate.year, endDate.month - 1, endDate.day);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    if (todayDay < 15) {
+      startDate =
+          DateTime.utc(DateTime.now().year, DateTime.now().month - 1, 15);
+      endDate = DateTime.utc(DateTime.now().year, DateTime.now().month, 15);
+    } else {
+      startDate = DateTime.utc(DateTime.now().year, DateTime.now().month, 15);
+      endDate = DateTime.utc(DateTime.now().year, DateTime.now().month + 1, 15);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    var voucherList = Provider.of<getVoucherProvider>(context);
+    getVoucherProvider voucherList = Provider.of<getVoucherProvider>(context);
+    String parsedStartDate =
+        DateFormat(DateFormat.MONTH_DAY, 'pt-Br').format(startDate);
+    String parsedEndDate =
+        DateFormat(DateFormat.MONTH_DAY, 'pt-Br').format(endDate);
+
+    setState(() {
+      ammount = voucherList.getVoucherFilteredSum(startDate, endDate);
+      voucherQnt = voucherList.getVoucherFilteredLength(startDate, endDate);
+    });
+
     return SafeArea(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: EdgeInsets.all(25),
+            // ------------------------ HEADER ------------------------
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -47,7 +87,7 @@ class _VoucherListBodyState extends State<VoucherListBody> {
                       ],
                     )),
                 SizedBox(
-                  height: 40,
+                  height: 30,
                 ),
                 Text(
                   'Vouchers',
@@ -56,6 +96,7 @@ class _VoucherListBodyState extends State<VoucherListBody> {
               ],
             ),
           ),
+          // ------------------------ BACKGROUND WHITE CONTAINER ------------------------
           Container(
             decoration: BoxDecoration(
               color: Colors.white,
@@ -68,41 +109,77 @@ class _VoucherListBodyState extends State<VoucherListBody> {
                 kToolbarHeight - // top AppBar height
                 MediaQuery.of(context).padding.top - // top padding
                 kBottomNavigationBarHeight -
-                102,
+                92,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: 25,
+                  height: 20,
                 ),
+                Center(
+                    child: Text(
+                  '${startDate.year}',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                )),
+                SizedBox(
+                  height: 10,
+                ),
+                // ------------------------ DATE BACK BUTTON ------------------------
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(
-                      Icons.arrow_back_ios,
-                      size: 16,
+                    GestureDetector(
+                      onTap: () {
+                        HapticFeedback.lightImpact();
+                        setState(() {
+                          handleDateDown();
+                        });
+                      },
+                      child: Icon(
+                        Icons.arrow_back_ios,
+                        size: 16,
+                      ),
                     ),
-                    SizedBox(width: 15),
-                    Text(
-                      '15 de Outubro - 15 de Novembro',
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    // ------------------------ DATES ------------------------
+                    Container(
+                      alignment: Alignment.center,
+                      width: 270,
+                      child: AnimatedSwitcher(
+                        switchInCurve: Curves.easeOutExpo,
+                        switchOutCurve: Curves.easeInExpo,
+                        duration: Duration(milliseconds: 500),
+                        child: Text(
+                          '${parsedStartDate} - ${parsedEndDate}',
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.bold),
+                          key: ValueKey(startDate),
+                        ),
+                      ),
                     ),
-                    SizedBox(width: 15),
-                    Icon(Icons.arrow_forward_ios, size: 16)
+                    // ------------------------ DATE FORWARD BUTTON ------------------------
+                    GestureDetector(
+                      child: Icon(Icons.arrow_forward_ios, size: 16),
+                      onTap: () {
+                        HapticFeedback.lightImpact();
+                        setState(() {
+                          handleDateUp();
+                        });
+                      },
+                    )
                   ],
                 ),
                 SizedBox(
                   height: 25,
                 ),
+                // ------------------------ BUILDER CONTAINER ------------------------
                 Container(
                   height: MediaQuery.of(context).size.height - // total height
                       kToolbarHeight - // top AppBar height
                       MediaQuery.of(context).padding.top - // top padding
                       kBottomNavigationBarHeight -
-                      265,
+                      267,
                   child: FutureBuilder(
-                    future: voucherList.getSortedVouchers(),
+                    future: voucherList.getVouchersByDate(startDate, endDate),
                     builder: (context, snapshot) {
                       if (snapshot.hasError) {
                         return Center(
@@ -133,46 +210,13 @@ class _VoucherListBodyState extends State<VoucherListBody> {
                     },
                   ),
                 ),
+                // ------------------------ BOTTOM RESUME ------------------------
                 Divider(
                   thickness: 2,
                   height: 0,
                 ),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text('Número de Pedidos:',
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold)),
-                          Text('46',
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold)),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Total:',
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            'R\$50,00',
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0x0FF138800)),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                )
+
+                VouchersResume(value: ammount, qnt: voucherQnt),
               ],
             ),
           ),
