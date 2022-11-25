@@ -5,7 +5,7 @@ import 'package:flutter_test_project/screens/loading/loadingScreen.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:provider/provider.dart';
 
-import 'constants.dart';
+import 'config/constants.dart';
 
 void main() {
   initializeDateFormatting();

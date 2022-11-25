@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../constants.dart';
+import '../config/constants.dart';
 
 class CustomInput extends StatelessWidget {
   final Color? textColor;

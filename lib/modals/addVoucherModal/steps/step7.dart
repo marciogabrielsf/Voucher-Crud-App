@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_test_project/constants.dart';
+import 'package:flutter_test_project/config/constants.dart';
 
 class VoucherStep7 extends StatefulWidget {
   VoucherStep7({super.key});

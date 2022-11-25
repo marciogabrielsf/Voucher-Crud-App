@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../signUp/signUpScreen.dart';
+import '../../signUp/view/signUpScreen.dart';
 
 class JoinNowButton extends StatelessWidget {
   const JoinNowButton({

@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test_project/api/signUpUser.dart';
-import 'package:flutter_test_project/constants.dart';
-import 'package:flutter_test_project/components/customInput.dart';
+import 'package:flutter_test_project/config/constants.dart';
+import 'package:flutter_test_project/Widgets/customInput.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class Body extends StatefulWidget {

@@ -4,10 +4,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../constants.dart';
+import '../config/constants.dart';
 import '../providers/authProvider.dart';
-import '../screens/home/HomeScreen.dart';
-import '../screens/login/loginScreen.dart';
+import '../screens/home/view/HomeScreen.dart';
+import '../screens/login/view/loginScreen.dart';
 import 'package:http/http.dart' as http;
 
 Future<void> checkToken(BuildContext context) async {

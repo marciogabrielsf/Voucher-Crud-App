@@ -3,9 +3,10 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:flutter_test_project/constants.dart';
+import 'package:flutter_test_project/config/constants.dart';
 
-import '../components/scaffoldedMessage.dart';
+import '../Widgets/scaffoldedMessage.dart';
+
 
 Future<void> signUp(String email, String cpf, String name, String password,
     String confirmPassword, BuildContext context) async {

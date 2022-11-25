@@ -5,7 +5,7 @@ import 'dart:io';
 import 'package:flutter_test_project/models/get_Voucher_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_test_project/constants.dart';
+import 'package:flutter_test_project/config/constants.dart';
 
 Future<List<getVoucherModel>> fetchVouchers() async {
   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();

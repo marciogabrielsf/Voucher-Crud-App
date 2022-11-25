@@ -5,8 +5,8 @@ import 'package:flutter_test_project/modals/addVoucherModal/steps/step2.dart';
 import 'package:flutter_test_project/providers/addVoucherProvider.dart';
 import 'package:provider/provider.dart';
 
-import '../../../components/customInput.dart';
-import '../../../constants.dart';
+import '../../../Widgets/customInput.dart';
+import '../../../config/constants.dart';
 
 class VoucherStep1 extends StatefulWidget {
   VoucherStep1({

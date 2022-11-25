@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test_project/api/fetchVouchers.dart';
-import 'package:flutter_test_project/components/defaultNavigationBar.dart';
 import 'package:flutter_test_project/models/get_Voucher_model.dart';
 import 'package:flutter_test_project/providers/getVoucherProvider.dart';
-import 'package:flutter_test_project/screens/home/components/homeBody.dart';
+import 'package:flutter_test_project/screens/home/view/view.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:provider/provider.dart';
-import '../../modals/addVoucherModal/addVoucherModal.dart';
+import '../../../Widgets/defaultAddVoucherButton.dart';
+import '../../../Widgets/defaultNavigationBar.dart';
+import '../../../modals/addVoucherModal/addVoucherModal.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -32,22 +33,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var fetchedVouchers = Provider.of<getVoucherProvider>(context);
     return Scaffold(
       body: HomeBody(),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Color(0xFF1ED800),
-        onPressed: () async {
-          await showCupertinoModalBottomSheet(
-              isDismissible: false,
-              enableDrag: false,
-              expand: true,
-              context: context,
-              builder: (context) => AddVoucherModal());
-          fetchedVouchers.updateList(await fetchVouchers());
-        },
-        child: Icon(Icons.add_circle, size: 30),
-      ),
+      floatingActionButton: DefaultAddVoucherButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: DefaultBottomNavigation(),
     );

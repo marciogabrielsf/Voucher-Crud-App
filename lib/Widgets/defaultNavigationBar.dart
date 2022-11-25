@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test_project/screens/home/HomeScreen.dart';
+import 'package:flutter_test_project/screens/home/view/HomeScreen.dart';
 
 class DefaultBottomNavigation extends StatefulWidget {
   const DefaultBottomNavigation({

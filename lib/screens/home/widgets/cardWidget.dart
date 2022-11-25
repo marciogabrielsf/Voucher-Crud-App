@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test_project/constants.dart';
+import '../../../config/constants.dart';
 
 class CardWidget extends StatelessWidget {
   final String balance;

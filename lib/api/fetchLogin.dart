@@ -3,13 +3,13 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_test_project/providers/authProvider.dart';
-import 'package:flutter_test_project/screens/home/HomeScreen.dart';
+import 'package:flutter_test_project/screens/home/view/HomeScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
-import '../components/scaffoldedMessage.dart';
-import '../constants.dart';
+import '../Widgets/scaffoldedMessage.dart';
+import '../config/constants.dart';
 import '../providers/getVoucherProvider.dart';
 
 // login

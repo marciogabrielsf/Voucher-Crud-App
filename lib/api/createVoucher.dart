@@ -4,12 +4,12 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_test_project/components/scaffoldedMessage.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_test_project/constants.dart';
+import 'package:flutter_test_project/config/constants.dart';
 
+import '../Widgets/scaffoldedMessage.dart';
 import '../modals/addVoucherModal/steps/step7.dart';
 
 Future<void> createVoucher(
@@ -29,8 +29,12 @@ Future<void> createVoucher(
   num parsedValue = numberFormat.parse(value);
   num parsedVoucher = int.parse(voucherNumber);
   var parsedOrder = int.parse(orderNumber);
-  var date = new DateTime(2022, 11, 10);
-  var datetime = date.toIso8601String() + 'Z';
+
+  var splitedDate = voucherDate.split('/');
+  var date = DateTime(int.parse(splitedDate[2]), int.parse(splitedDate[1]),
+              int.parse(splitedDate[0]))
+          .toIso8601String() +
+      'Z';
 
   try {
     var response = await http
@@ -44,7 +48,7 @@ Future<void> createVoucher(
               "orderNumber": parsedOrder,
               "value": parsedValue,
               "company": company,
-              "voucherDate": datetime
+              "voucherDate": date
             }))
         .timeout(Duration(seconds: 30));
 

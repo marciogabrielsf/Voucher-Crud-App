@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test_project/constants.dart';
-import 'package:flutter_test_project/screens/login/loginScreen.dart';
+import 'package:flutter_test_project/config/constants.dart';
+import 'package:flutter_test_project/screens/login/view/loginScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../api/checkToken.dart';

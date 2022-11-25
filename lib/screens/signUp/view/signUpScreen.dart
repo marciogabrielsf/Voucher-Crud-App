@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_test_project/constants.dart';
-import 'package:flutter_test_project/screens/signUp/Components/signUpBody.dart';
+import '../../../config/constants.dart';
+import 'package:flutter_test_project/screens/signUp/view/view.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});

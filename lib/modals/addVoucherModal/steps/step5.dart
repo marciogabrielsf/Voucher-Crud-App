@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test_project/modals/addVoucherModal/steps/step6.dart';
 import 'package:provider/provider.dart';
 
-import '../../../components/customInput.dart';
-import '../../../constants.dart';
+import '../../../Widgets/customInput.dart';
+import '../../../config/constants.dart';
 import '../../../providers/addVoucherProvider.dart';
 
 class VoucherStep5 extends StatefulWidget {

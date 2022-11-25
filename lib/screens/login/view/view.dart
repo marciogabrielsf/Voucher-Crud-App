@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test_project/api/fetchLogin.dart';
-import 'package:flutter_test_project/constants.dart';
-import 'package:flutter_test_project/screens/login/components/joinNowButton.dart';
+import 'package:flutter_test_project/config/constants.dart';
+import 'package:flutter_test_project/screens/login/widgets/joinNowButton.dart';
 import 'package:flutter/cupertino.dart';
 
 class Body extends StatefulWidget {
