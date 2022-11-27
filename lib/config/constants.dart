@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const String URL_BASE = "http://10.0.2.2:3000";
+const String URL_BASE = "https://backend-eneva.herokuapp.com";
 
 const kPrimaryColor = Color(0xFF000000);
 const kSecondaryColor = Color(0xFF999999);

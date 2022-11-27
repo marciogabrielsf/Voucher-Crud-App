@@ -7,7 +7,6 @@ import 'package:flutter_test_project/config/constants.dart';
 
 import '../Widgets/scaffoldedMessage.dart';
 
-
 Future<void> signUp(String email, String cpf, String name, String password,
     String confirmPassword, BuildContext context) async {
   var url = Uri.parse("${URL_BASE}/auth/register/");
