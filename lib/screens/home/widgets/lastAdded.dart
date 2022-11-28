@@ -54,7 +54,7 @@ class _LastVoucherAddedState extends State<LastVoucherAdded> {
                   var vouchers = snapshot.data as List<getVoucherModel>;
                   return ListView.builder(
                     padding: EdgeInsets.all(20),
-                    itemCount: vouchers.length < 5 ? vouchers.length : 5,
+                    itemCount: vouchers.length < 7 ? vouchers.length : 7,
                     itemBuilder: (context, index) {
                       return LastAddedItem(
                         voucher: vouchers[index],

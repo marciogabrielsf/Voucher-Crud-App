@@ -91,48 +91,61 @@ class dataItem extends StatelessWidget {
   }
 }
 
-class saveBottomSheet extends StatelessWidget {
+class saveBottomSheet extends StatefulWidget {
   const saveBottomSheet({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<saveBottomSheet> createState() => _saveBottomSheetState();
+}
+
+class _saveBottomSheetState extends State<saveBottomSheet> {
+  bool isLoading = false;
+  @override
   Widget build(BuildContext context) {
     var voucherProvider = Provider.of<VoucherProvider>(context).voucher;
     return Container(
+      width: double.infinity,
+      height: 180,
       padding: EdgeInsets.symmetric(vertical: 50, horizontal: 25),
-      color: kBackgroundColor,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          CupertinoButton(
-            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
-            borderRadius: BorderRadius.circular(50),
-            color: kPrimaryColor,
-            child: Row(
-              children: [
-                Text(
-                  'Salvar',
-                  style: TextStyle(fontSize: 20),
-                ),
-                SizedBox(width: 10),
-                Icon(
-                  Icons.check,
-                  size: 24,
-                )
-              ],
-            ),
-            onPressed: () {
-              createVoucher(
-                  voucherProvider.voucherNumber,
-                  voucherProvider.value,
-                  voucherProvider.date,
-                  voucherProvider.orderNumber,
-                  voucherProvider.company,
-                  context);
-            },
-          ),
-        ],
+      color: Colors.red,
+      child: CupertinoButton(
+        padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+        borderRadius: BorderRadius.circular(50),
+        color: kPrimaryColor,
+        child: !isLoading
+            ? Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Salvar',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  SizedBox(width: 10),
+                  Icon(
+                    Icons.check,
+                    size: 24,
+                  )
+                ],
+              )
+            : CircularProgressIndicator.adaptive(
+                valueColor: AlwaysStoppedAnimation<Color>(kTextColorInv)),
+        onPressed: () async {
+          setState(() {
+            isLoading = true;
+          });
+          await createVoucher(
+              voucherProvider.voucherNumber,
+              voucherProvider.value,
+              voucherProvider.date,
+              voucherProvider.orderNumber,
+              voucherProvider.company,
+              context);
+          setState(() {
+            isLoading = false;
+          });
+        },
       ),
     );
   }

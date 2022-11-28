@@ -34,6 +34,7 @@ class getVoucherProvider extends ChangeNotifier {
           },
         ),
       );
+      filteredList.sort((a, b) => b.date!.compareTo(a.date!));
     }
     return filteredList;
   }
