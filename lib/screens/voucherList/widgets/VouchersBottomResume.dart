@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test_project/config/constants.dart';
 import 'package:intl/intl.dart';
 
 class VouchersResume extends StatefulWidget {
   final num value;
   final num qnt;
+  final num discount;
   const VouchersResume({
     Key? key,
     required this.value,
     required this.qnt,
+    required this.discount,
   }) : super(key: key);
 
   @override
@@ -40,11 +43,31 @@ class _VouchersResumeState extends State<VouchersResume> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Total:',
+                'Faturamento:',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               Text(
                 numberFormat.format(widget.value),
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: kTextColor,
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Lucro:',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              Text(
+                numberFormat.format(widget.discount),
                 style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,

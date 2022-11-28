@@ -21,6 +21,9 @@ class _VoucherListBodyState extends State<VoucherListBody>
     with SingleTickerProviderStateMixin {
   num ammount = 0;
   num voucherQnt = 0;
+  num discountPercentage = 0.15;
+  num discountedAmmount = 0;
+
   int todayDay = DateTime.now().day;
 
   late DateTime startDate;
@@ -62,6 +65,7 @@ class _VoucherListBodyState extends State<VoucherListBody>
     setState(() {
       ammount = voucherList.getVoucherFilteredSum(startDate, endDate);
       voucherQnt = voucherList.getVoucherFilteredLength(startDate, endDate);
+      discountedAmmount = ammount - (ammount * discountPercentage);
     });
 
     return SafeArea(
@@ -161,7 +165,7 @@ class _VoucherListBodyState extends State<VoucherListBody>
                   ],
                 ),
                 SizedBox(
-                  height: 25,
+                  height: 10,
                 ),
                 // ------------------------ BUILDER CONTAINER ------------------------
                 Container(
@@ -169,7 +173,7 @@ class _VoucherListBodyState extends State<VoucherListBody>
                       kToolbarHeight - // top AppBar height
                       MediaQuery.of(context).padding.top - // top padding
                       kBottomNavigationBarHeight -
-                      267,
+                      300,
                   child: FutureBuilder(
                     future: voucherList.getVouchersByDate(startDate, endDate),
                     builder: (context, snapshot) {
@@ -208,7 +212,11 @@ class _VoucherListBodyState extends State<VoucherListBody>
                   height: 0,
                 ),
                 // ------------------------ AMMOUNT AND QNT ------------------------
-                VouchersResume(value: ammount, qnt: voucherQnt),
+                VouchersResume(
+                  value: ammount,
+                  qnt: voucherQnt,
+                  discount: discountedAmmount,
+                ),
               ],
             ),
           ),
