@@ -1,18 +1,17 @@
 // packages
 import 'package:flutter/material.dart';
+import 'package:flutter_test_project/providers/getVoucherProvider.dart';
 
 // components
 
 import 'package:flutter_test_project/screens/home/widgets/buttonWithLabel.dart';
 import 'package:flutter_test_project/screens/home/widgets/cardWidget.dart';
 import 'package:flutter_test_project/screens/home/widgets/lastAdded.dart';
-import 'package:flutter_test_project/screens/login/view/loginScreen.dart';
 import 'package:flutter_test_project/screens/voucherList/view/voucherListScreen.dart';
+import 'package:intl/intl.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 // functions
-
-import 'package:flutter_test_project/api/fetchLogin.dart';
 
 // providers
 
@@ -28,15 +27,19 @@ class HomeBody extends StatefulWidget {
 
 class _HomeBodyState extends State<HomeBody> {
   final _pageController = PageController();
+  NumberFormat numberFormat =
+      NumberFormat.simpleCurrency(locale: 'pt-BR', decimalDigits: 2);
 
-  @override
-  void initState() {
-    super.initState();
-  }
+  DateTime today = DateTime.now();
+  late DateTime plusOneMonth = DateTime.utc(today.year, today.month + 1, 15);
+  late DateTime todayMonth = DateTime.utc(today.year, today.month, 15);
+  late DateTime oneMonthAgo = DateTime.utc(today.year, today.month - 1, 15);
+  late DateTime twoMonthsAgo = DateTime.utc(today.year, today.month - 2, 15);
 
   @override
   Widget build(BuildContext context) {
     var loggedUser = Provider.of<UserProvider>(context).user;
+    getVoucherProvider voucherList = Provider.of<getVoucherProvider>(context);
     return SafeArea(
       child: SingleChildScrollView(
         child: Column(
@@ -51,21 +54,10 @@ class _HomeBodyState extends State<HomeBody> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text('Olá,', style: TextStyle(fontSize: 24)),
-                      GestureDetector(
-                        child: Text(
-                          loggedUser.firstName,
-                          style: TextStyle(
-                              fontSize: 24, fontWeight: FontWeight.bold),
-                        ),
-                        onTap: () {
-                          logOut(context);
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => LoginScreen(),
-                            ),
-                          );
-                        },
+                      Text(
+                        loggedUser.firstName,
+                        style: TextStyle(
+                            fontSize: 24, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -81,17 +73,20 @@ class _HomeBodyState extends State<HomeBody> {
                 controller: _pageController,
                 children: [
                   CardWidget(
-                    balance: "R\$ 15.430,10",
+                    balance:
+                        "${numberFormat.format(voucherList.getVoucherFilteredSum(twoMonthsAgo, oneMonthAgo))}",
                     color: Color(0xFF1ED800),
                     month: "Neste Mês",
                   ),
                   CardWidget(
-                    balance: "R\$ 9.543,20",
+                    balance:
+                        "${numberFormat.format(voucherList.getVoucherFilteredSum(oneMonthAgo, todayMonth))}",
                     color: Color(0xFF1ED800),
                     month: "Próximo Mês",
                   ),
                   CardWidget(
-                    balance: "R\$ 3.415,02",
+                    balance:
+                        "${numberFormat.format(voucherList.getVoucherFilteredSum(todayMonth, plusOneMonth))}",
                     color: Color(0xFF1ED800),
                     month: "Em Dois Meses",
                   ),

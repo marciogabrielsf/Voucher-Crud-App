@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test_project/Widgets/LastAddedItem.dart';
+import 'package:flutter_test_project/config/constants.dart';
 import 'package:flutter_test_project/models/get_Voucher_model.dart';
 import 'package:flutter_test_project/screens/voucherList/widgets/VouchersBottomResume.dart';
 import 'package:intl/intl.dart';
@@ -67,27 +69,17 @@ class _VoucherListBodyState extends State<VoucherListBody>
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.all(25),
+            padding: EdgeInsets.all(20),
             // ------------------------ HEADER ------------------------
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                GestureDetector(
-                    onTap: () => Navigator.of(context).pop(),
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.arrow_back_ios,
-                          size: 20,
-                        ),
-                        Text(
-                          'Voltar',
-                          style: TextStyle(color: Colors.black, fontSize: 18),
-                        )
-                      ],
-                    )),
+                CupertinoNavigationBarBackButton(
+                  color: kPrimaryColor,
+                  previousPageTitle: 'Voltar',
+                ),
                 SizedBox(
-                  height: 30,
+                  height: 18,
                 ),
                 Text(
                   'Vouchers',
@@ -215,7 +207,7 @@ class _VoucherListBodyState extends State<VoucherListBody>
                   thickness: 2,
                   height: 0,
                 ),
-
+                // ------------------------ AMMOUNT AND QNT ------------------------
                 VouchersResume(value: ammount, qnt: voucherQnt),
               ],
             ),

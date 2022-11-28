@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_test_project/config/constants.dart';
 
 class VoucherStep7 extends StatefulWidget {
@@ -10,6 +11,13 @@ class VoucherStep7 extends StatefulWidget {
 }
 
 class _VoucherStep7State extends State<VoucherStep7> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    HapticFeedback.vibrate();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
