@@ -82,9 +82,6 @@ class _VoucherListBodyState extends State<VoucherListBody>
                   color: kPrimaryColor,
                   previousPageTitle: 'Voltar',
                 ),
-                SizedBox(
-                  height: 18,
-                ),
                 Text(
                   ' Vouchers',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 36),
@@ -105,7 +102,7 @@ class _VoucherListBodyState extends State<VoucherListBody>
                 kToolbarHeight - // top AppBar height
                 MediaQuery.of(context).padding.top - // top padding
                 kBottomNavigationBarHeight -
-                92,
+                74,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -173,7 +170,7 @@ class _VoucherListBodyState extends State<VoucherListBody>
                       kToolbarHeight - // top AppBar height
                       MediaQuery.of(context).padding.top - // top padding
                       kBottomNavigationBarHeight -
-                      300,
+                      260,
                   child: FutureBuilder(
                     future: voucherList.getVouchersByDate(startDate, endDate),
                     builder: (context, snapshot) {
