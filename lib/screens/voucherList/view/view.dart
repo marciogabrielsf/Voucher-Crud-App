@@ -86,7 +86,7 @@ class _VoucherListBodyState extends State<VoucherListBody>
                   height: 18,
                 ),
                 Text(
-                  'Vouchers',
+                  ' Vouchers',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 36),
                 )
               ],
