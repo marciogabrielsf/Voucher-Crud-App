@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:provider/provider.dart';
 
@@ -16,6 +17,7 @@ class DefaultAddVoucherButton extends StatelessWidget {
     return FloatingActionButton(
       backgroundColor: Color(0xFF1ED800),
       onPressed: () async {
+        HapticFeedback.vibrate();
         var fetchedVouchers =
             Provider.of<getVoucherProvider>(context, listen: false);
         await showCupertinoModalBottomSheet(

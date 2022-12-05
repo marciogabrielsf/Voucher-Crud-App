@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
-const String URL_BASE = "https://voucher-crud-backend.onrender.com";
-const String appVersion = '0.8.0';
+const String URL_BASE = "http://10.0.2.2:3000";
+const String appVersion = '1.0.0';
+
+const profitDiscount = 0.15;
+
+const startDay = 15;
+const endDay = 15;
 
 const kPrimaryColor = Color(0xFF000000);
 const kSecondaryColor = Color(0xFF999999);

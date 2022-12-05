@@ -7,6 +7,7 @@ class CustomInput extends StatelessWidget {
   final Color? textColor;
   final Color? placeholderColor;
   final String? placeholder;
+  final String? initialInput;
   final Color? backgroundColor;
   final bool? obscureText;
   final bool? autofocus;
@@ -27,6 +28,7 @@ class CustomInput extends StatelessWidget {
     this.inputFormatters,
     this.validator,
     this.autofocus,
+    this.initialInput,
   }) : super(key: key);
 
   @override
@@ -39,6 +41,7 @@ class CustomInput extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: TextFormField(
+          initialValue: initialInput ?? null,
           autofocus: autofocus ?? false,
           validator: validator,
           inputFormatters: inputFormatters,

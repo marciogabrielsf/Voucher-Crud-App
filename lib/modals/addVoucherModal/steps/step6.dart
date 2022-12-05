@@ -109,7 +109,7 @@ class _saveBottomSheetState extends State<saveBottomSheet> {
       width: double.infinity,
       height: 180,
       padding: EdgeInsets.symmetric(vertical: 50, horizontal: 25),
-      color: Colors.red,
+      color: kBackgroundColor,
       child: CupertinoButton(
         padding: EdgeInsets.symmetric(vertical: 20, horizontal: 30),
         borderRadius: BorderRadius.circular(50),

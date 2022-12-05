@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_test_project/providers/authProvider.dart';
 import 'package:flutter_test_project/screens/home/view/HomeScreen.dart';

@@ -26,83 +26,79 @@ class _VoucherStep4State extends State<VoucherStep4> {
   Widget build(BuildContext context) {
     var voucherProvider = Provider.of<VoucherProvider>(context, listen: false);
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(25.0),
-          child: Form(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    GestureDetector(
-                      child: Icon(Icons.arrow_back_ios),
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      "Qual a data da",
-                      style:
-                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      "corrida?",
-                      style:
-                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      "Qual o dia em que a corrida",
-                      style: TextStyle(fontSize: 18),
-                    ),
-                    Text(
-                      "aconteceu?",
-                      style: TextStyle(fontSize: 18),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    CustomInput(
-                      controller: _dateController,
-                      keyboardType: TextInputType.datetime,
-                      placeholder: '00/00/0000',
-                      inputFormatters: [maskFormatter],
-                      autofocus: true,
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    FloatingActionButton(
-                      heroTag: "Step4",
-                      onPressed: () {
-                        voucherProvider.setVoucherDate(_dateController.text);
-                        Navigator.push(
-                          context,
-                          CupertinoPageRoute(
-                            builder: (context) => VoucherStep5(),
-                          ),
-                        );
-                      },
-                      backgroundColor: kPrimaryColor,
-                      child: Icon(Icons.arrow_forward),
-                    ),
-                    SizedBox(
-                      height: 40,
-                    )
-                  ],
-                ),
-              ],
-            ),
+      body: Padding(
+        padding: const EdgeInsets.all(25.0),
+        child: Form(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  GestureDetector(
+                    child: Icon(Icons.arrow_back_ios),
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    "Qual a data da",
+                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    "corrida?",
+                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    "Qual o dia em que a corrida",
+                    style: TextStyle(fontSize: 18),
+                  ),
+                  Text(
+                    "aconteceu?",
+                    style: TextStyle(fontSize: 18),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  CustomInput(
+                    controller: _dateController,
+                    keyboardType: TextInputType.datetime,
+                    placeholder: '00/00/0000',
+                    inputFormatters: [maskFormatter],
+                    autofocus: true,
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  FloatingActionButton(
+                    heroTag: "Step4",
+                    onPressed: () {
+                      voucherProvider.setVoucherDate(_dateController.text);
+                      Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                          builder: (context) => VoucherStep5(),
+                        ),
+                      );
+                    },
+                    backgroundColor: kPrimaryColor,
+                    child: Icon(Icons.arrow_forward),
+                  ),
+                  SizedBox(
+                    height: 40,
+                  )
+                ],
+              ),
+            ],
           ),
         ),
       ),
