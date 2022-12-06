@@ -1,7 +1,5 @@
 # Voucher CRUD app
 
-<img src="exemplo-image.png" alt="exemplo imagem">
-
 > App Running.
 ### Ajustes e melhorias
 
