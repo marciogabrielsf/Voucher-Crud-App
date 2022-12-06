@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-const String URL_BASE = "https://voucher-crud-backend.onrender.com";
+const String URL_BASE =
+    "https://voucher-crud-backend-j33qh9e4l-fiieryx.vercel.app";
 const String appVersion = '1.0.0';
 
 const profitDiscount = 0.15;
