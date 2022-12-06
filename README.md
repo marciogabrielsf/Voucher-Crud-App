@@ -1,7 +1,5 @@
 # Voucher CRUD app
 
-<img src="exemplo-image.png" alt="exemplo imagem">
-
 > App Running.
 ### Ajustes e melhorias
 
@@ -10,8 +8,8 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [x] UI Design
 - [x] JWT Auth
 - [x] Create and List Vouchers
-- [ ] Update and Delete Vouchers
-- [ ] Bug Fixes
+- [x] Update and Delete Vouchers
+- [x] Bug Fixes
 
 ## 💻 Pré-requisitos
 
@@ -32,13 +30,4 @@ flutter pub get
 
 ## ☕ Usando o Voucher CRUD
 
-Para usar Voucher CRUD você precisa ter o android studio com um emulador instalado.
-
-Adicione comandos de execução e exemplos que você acha que os usuários acharão úteis. Fornece uma referência de opções para pontos de bônus!
-
-
-## 📝 Licença
-
-Esse projeto está sob licença. Veja o arquivo [LICENÇA](LICENSE.md) para mais detalhes.
-
-[⬆ Voltar ao topo](#nome-do-projeto)<br>
+Para usar Voucher CRUD você precisa ter o android studio com um emulador instalado, você pode criar uma conta, logar, adicionar algum voucher, atualizar e deletar
