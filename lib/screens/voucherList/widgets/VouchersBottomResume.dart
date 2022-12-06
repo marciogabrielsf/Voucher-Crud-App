@@ -33,9 +33,9 @@ class _VouchersResumeState extends State<VouchersResume> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text('Número de Pedidos:',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
               Text('${widget.qnt}',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
             ],
           ),
           // ------------------------ ORDER VALUES ------------------------
@@ -44,12 +44,12 @@ class _VouchersResumeState extends State<VouchersResume> {
             children: [
               Text(
                 'Faturamento:',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
               Text(
                 numberFormat.format(widget.value),
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 16,
                   fontWeight: FontWeight.bold,
                   color: kTextColor,
                 ),
@@ -64,12 +64,12 @@ class _VouchersResumeState extends State<VouchersResume> {
             children: [
               Text(
                 'Lucro:',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
               Text(
                 numberFormat.format(widget.discount),
                 style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 16,
                     fontWeight: FontWeight.bold,
                     color: Color(0x0FF138800)),
               ),

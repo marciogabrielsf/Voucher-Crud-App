@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test_project/api/signUpUser.dart';
+import 'package:flutter_test_project/api/userLogin.dart';
 import 'package:flutter_test_project/config/constants.dart';
 import 'package:flutter_test_project/Widgets/customInput.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
@@ -30,6 +31,7 @@ class _BodyState extends State<Body> {
 
   // keys
   final _formkey = GlobalKey<FormState>();
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -157,22 +159,30 @@ class _BodyState extends State<Body> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Checkbox(
-                        value: isTermChecked,
-                        onChanged: (checked) {
+                    SizedBox(
+                      width: 20,
+                      child: Checkbox(
+                          value: isTermChecked,
+                          onChanged: (checked) {
+                            setState(() {
+                              isTermChecked = !isTermChecked;
+                            });
+                          }),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      child: GestureDetector(
+                        child: Text(
+                          "Eu concordo com os termos de uso.",
+                        ),
+                        onTap: () {
                           setState(() {
                             isTermChecked = !isTermChecked;
                           });
-                        }),
-                    GestureDetector(
-                      child: Text(
-                        "Eu concordo com os termos de uso.",
+                        },
                       ),
-                      onTap: () {
-                        setState(() {
-                          isTermChecked = !isTermChecked;
-                        });
-                      },
                     )
                   ],
                 ),
@@ -189,10 +199,17 @@ class _BodyState extends State<Body> {
                   child: CupertinoButton(
                     borderRadius: BorderRadius.all(Radius.circular(0)),
                     alignment: Alignment.center,
-                    child: Text(
-                      "Cadastrar-se",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
+                    child: !isLoading
+                        ? Text(
+                            "Cadastrar-se",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          )
+                        : Container(
+                            width: 30,
+                            height: 30,
+                            child: CircularProgressIndicator.adaptive(
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                    kTextColorInv))),
                     pressedOpacity: 0.8,
                     onPressed: () async {
                       FocusScopeNode currentFocus = FocusScope.of(context);
@@ -201,6 +218,9 @@ class _BodyState extends State<Body> {
                           if (!currentFocus.hasPrimaryFocus) {
                             currentFocus.unfocus();
                           }
+                          setState(() {
+                            isLoading = true;
+                          });
                           await signUp(
                               _emailController.text,
                               _cpfController.text,
@@ -208,6 +228,9 @@ class _BodyState extends State<Body> {
                               _passwordController.text,
                               _confirmPasswordController.text,
                               context);
+                          setState(() {
+                            isLoading = false;
+                          });
                           _emailController.clear();
                           _cpfController.clear();
                           _nameController.clear();

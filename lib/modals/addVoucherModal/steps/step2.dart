@@ -42,22 +42,14 @@ class _VoucherStep2State extends State<VoucherStep2> {
                   height: 20,
                 ),
                 Text(
-                  "Qual o número do",
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  "pedido?",
+                  "Qual o número do pedido?",
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
                   height: 20,
                 ),
                 Text(
-                  "Digite o número do pedido a ser",
-                  style: TextStyle(fontSize: 18),
-                ),
-                Text(
-                  "adicionado.",
+                  "Digite o número do pedido a ser adicionado",
                   style: TextStyle(fontSize: 18),
                 ),
                 SizedBox(

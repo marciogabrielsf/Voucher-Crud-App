@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_test_project/api/userLogin.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_test_project/config/constants.dart';
 
@@ -27,8 +28,7 @@ Future<void> signUp(String email, String cpf, String name, String password,
         .timeout(Duration(seconds: 30));
 
     if (response.statusCode == 201) {
-      showBottomMessage(
-          context, jsonDecode(response.body)['message'], Color(0xFF1ED800));
+      await login(email, password, context);
     } else {
       showBottomMessage(
           context, jsonDecode(response.body)['message'], Colors.red);

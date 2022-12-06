@@ -41,22 +41,14 @@ class _VoucherStep1State extends State<VoucherStep1> {
                   height: 20,
                 ),
                 Text(
-                  "Qual o número do",
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  "Voucher?",
+                  "Qual o número do Voucher?",
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
                   height: 20,
                 ),
                 Text(
-                  "Digite o número do voucher a ser",
-                  style: TextStyle(fontSize: 18),
-                ),
-                Text(
-                  "adicionado.",
+                  "Digite o número do voucher a ser adicionado",
                   style: TextStyle(fontSize: 18),
                 ),
                 SizedBox(

@@ -136,7 +136,7 @@ class _VoucherListBodyState extends State<VoucherListBody>
                       ),
                       // ------------------------ DATES ------------------------
                       Container(
-                        constraints: BoxConstraints(minWidth: 300),
+                        constraints: BoxConstraints(minWidth: 280),
                         alignment: Alignment.center,
                         child: AnimatedSwitcher(
                           switchInCurve: Curves.easeOutExpo,
@@ -145,7 +145,7 @@ class _VoucherListBodyState extends State<VoucherListBody>
                           child: Text(
                             '${parsedStartDate} - ${parsedEndDate}',
                             style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.bold),
+                                fontSize: 14, fontWeight: FontWeight.bold),
                             key: ValueKey(startDate),
                           ),
                         ),

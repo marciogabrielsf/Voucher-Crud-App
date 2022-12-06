@@ -46,22 +46,14 @@ class _VoucherStep4State extends State<VoucherStep4> {
                     height: 20,
                   ),
                   Text(
-                    "Qual a data da",
-                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    "corrida?",
+                    "Qual a data da corrida?",
                     style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
                     height: 20,
                   ),
                   Text(
-                    "Qual o dia em que a corrida",
-                    style: TextStyle(fontSize: 18),
-                  ),
-                  Text(
-                    "aconteceu?",
+                    "Qual o dia em que a corrida aconteceu?",
                     style: TextStyle(fontSize: 18),
                   ),
                   SizedBox(

@@ -47,22 +47,14 @@ class _VoucherStep3State extends State<VoucherStep3> {
                   height: 20,
                 ),
                 Text(
-                  "Qual o valor do",
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  "pedido?",
+                  "Qual o valor do pedido?",
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
                   height: 20,
                 ),
                 Text(
-                  "Quanto é o valor do pedido a ser",
-                  style: TextStyle(fontSize: 18),
-                ),
-                Text(
-                  "adicionado?",
+                  "Quanto é o valor do pedido a ser adicionado?",
                   style: TextStyle(fontSize: 18),
                 ),
                 SizedBox(

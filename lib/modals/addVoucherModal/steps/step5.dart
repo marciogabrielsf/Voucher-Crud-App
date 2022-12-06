@@ -47,11 +47,7 @@ class _VoucherStep5State extends State<VoucherStep5> {
                     height: 20,
                   ),
                   Text(
-                    "Qual a empresa que fez o pedido",
-                    style: TextStyle(fontSize: 18),
-                  ),
-                  Text(
-                    "da corrida?",
+                    "Qual a empresa que fez o pedido da corrida?",
                     style: TextStyle(fontSize: 18),
                   ),
                   SizedBox(

@@ -70,7 +70,7 @@ class _UpdateVoucherViewState extends State<UpdateVoucherView> {
             ),
             Text(
               'Voucher',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             SizedBox(
               height: 5,
@@ -84,7 +84,7 @@ class _UpdateVoucherViewState extends State<UpdateVoucherView> {
             ),
             Text(
               'Número do Pedido',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             SizedBox(
               height: 5,
@@ -98,7 +98,7 @@ class _UpdateVoucherViewState extends State<UpdateVoucherView> {
             ),
             Text(
               'Valor',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             SizedBox(
               height: 5,
@@ -113,7 +113,7 @@ class _UpdateVoucherViewState extends State<UpdateVoucherView> {
             ),
             Text(
               'Data',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             SizedBox(
               height: 5,
@@ -128,7 +128,7 @@ class _UpdateVoucherViewState extends State<UpdateVoucherView> {
             ),
             Text(
               'Empresa',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             SizedBox(
               height: 5,

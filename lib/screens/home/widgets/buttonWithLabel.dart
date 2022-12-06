@@ -47,7 +47,7 @@ class ButtonWithLabel extends StatelessWidget {
                 ),
                 Text(
                   subText ?? '',
-                  style: TextStyle(fontSize: 14),
+                  style: TextStyle(fontSize: 11),
                 ),
               ],
             ),
