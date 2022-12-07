@@ -30,7 +30,7 @@ class getVoucherProvider extends ChangeNotifier {
         _vouchers.where(
           (element) {
             var date = DateTime.parse(element.date!);
-            return date.compareTo(a) > 0 && date.compareTo(b) < 0;
+            return date.compareTo(a) >= 0 && date.compareTo(b) <= 0;
           },
         ),
       );
@@ -45,7 +45,7 @@ class getVoucherProvider extends ChangeNotifier {
       _vouchers.where(
         (element) {
           var date = DateTime.parse(element.date!);
-          return date.compareTo(a) > 0 && date.compareTo(b) < 0;
+          return date.compareTo(a) >= 0 && date.compareTo(b) <= 0;
         },
       ),
     );
@@ -64,7 +64,7 @@ class getVoucherProvider extends ChangeNotifier {
       _vouchers.where(
         (element) {
           var date = DateTime.parse(element.date!);
-          return date.compareTo(a) > 0 && date.compareTo(b) < 0;
+          return date.compareTo(a) >= 0 && date.compareTo(b) <= 0;
         },
       ),
     );

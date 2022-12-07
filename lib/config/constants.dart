@@ -6,7 +6,7 @@ const String appVersion = '1.0.0';
 
 const profitDiscount = 0.15;
 
-const startDay = 15;
+const startDay = 16;
 const endDay = 15;
 
 const kPrimaryColor = Color(0xFF000000);

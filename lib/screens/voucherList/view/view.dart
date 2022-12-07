@@ -35,27 +35,30 @@ class _VoucherListBodyState extends State<VoucherListBody>
   void handleDateUp() {
     startDate =
         DateTime.utc(startDate.year, startDate.month + 1, startDate.day);
-    endDate = DateTime.utc(endDate.year, endDate.month + 1, endDate.day);
+    endDate =
+        DateTime.utc(endDate.year, endDate.month + 1, endDate.day, 23, 59, 59);
   }
 
   void handleDateDown() {
     startDate =
         DateTime.utc(startDate.year, startDate.month - 1, startDate.day);
-    endDate = DateTime.utc(endDate.year, endDate.month - 1, endDate.day);
+    endDate =
+        DateTime.utc(endDate.year, endDate.month - 1, endDate.day, 23, 59, 59);
   }
 
   @override
   void initState() {
     super.initState();
-    if (todayDay < 15) {
+    if (todayDay < startDay) {
       startDate =
           DateTime.utc(DateTime.now().year, DateTime.now().month - 1, startDay);
-      endDate = DateTime.utc(DateTime.now().year, DateTime.now().month, endDay);
+      endDate = DateTime.utc(
+          DateTime.now().year, DateTime.now().month, endDay, 23, 59, 59);
     } else {
       startDate =
           DateTime.utc(DateTime.now().year, DateTime.now().month, startDay);
-      endDate =
-          DateTime.utc(DateTime.now().year, DateTime.now().month + 1, endDay);
+      endDate = DateTime.utc(
+          DateTime.now().year, DateTime.now().month + 1, endDay, 23, 59, 59);
     }
   }
 
