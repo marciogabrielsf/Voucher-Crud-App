@@ -24,7 +24,6 @@ class _VoucherListBodyState extends State<VoucherListBody>
     with SingleTickerProviderStateMixin {
   num ammount = 0;
   num voucherQnt = 0;
-  num discountPercentage = 0.15;
   num discountedAmmount = 0;
 
   int todayDay = DateTime.now().day;
@@ -206,7 +205,7 @@ class _VoucherListBodyState extends State<VoucherListBody>
                             }
                           }
                           return Center(
-                            child: CircularProgressIndicator.adaptive(),
+                            child: CircularProgressIndicator(),
                           );
                         },
                       ),

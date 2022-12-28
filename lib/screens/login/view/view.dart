@@ -136,7 +136,7 @@ class _BodyState extends State<Body> {
                           ? Container(
                               height: 25,
                               width: 25,
-                              child: CircularProgressIndicator.adaptive(
+                              child: CircularProgressIndicator(
                                 valueColor: AlwaysStoppedAnimation<Color>(
                                     kTextColorInv),
                               ),

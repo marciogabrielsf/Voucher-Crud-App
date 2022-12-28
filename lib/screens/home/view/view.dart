@@ -32,13 +32,25 @@ class _HomeBodyState extends State<HomeBody> {
       NumberFormat.simpleCurrency(locale: 'pt-BR', decimalDigits: 2);
 
   DateTime today = DateTime.now();
-  late DateTime plusOneMonth =
+  late DateTime plusOneMonthStart =
       DateTime.utc(today.year, today.month + 1, startDay);
-  late DateTime todayMonth = DateTime.utc(today.year, today.month, startDay);
-  late DateTime oneMonthAgo =
+  late DateTime plusOneMonthEnd =
+      DateTime.utc(today.year, today.month + 1, startDay, 23, 59, 59);
+
+  late DateTime todayMonthStart =
+      DateTime.utc(today.year, today.month, startDay);
+  late DateTime todayMonthEnd =
+      DateTime.utc(today.year, today.month, startDay, 23, 59, 59);
+
+  late DateTime oneMonthAgoStart =
       DateTime.utc(today.year, today.month - 1, startDay);
-  late DateTime twoMonthsAgo =
+  late DateTime oneMonthAgoEnd =
+      DateTime.utc(today.year, today.month - 1, startDay, 23, 59, 59);
+
+  late DateTime twoMonthsAgoStart =
       DateTime.utc(today.year, today.month - 2, startDay);
+  late DateTime twoMonthsAgoEnd =
+      DateTime.utc(today.year, today.month - 2, startDay, 23, 59, 59);
 
   @override
   Widget build(BuildContext context) {
@@ -78,19 +90,19 @@ class _HomeBodyState extends State<HomeBody> {
                 children: [
                   CardWidget(
                     balance:
-                        "${numberFormat.format(voucherList.getVoucherFilteredSum(twoMonthsAgo, oneMonthAgo) * (1 - profitDiscount))}",
+                        "${numberFormat.format(voucherList.getVoucherFilteredSum(twoMonthsAgoStart, oneMonthAgoEnd) * (1 - profitDiscount))}",
                     color: Color(0xFF1ED800),
                     month: "Neste Mês",
                   ),
                   CardWidget(
                     balance:
-                        "${numberFormat.format(voucherList.getVoucherFilteredSum(oneMonthAgo, todayMonth) * (1 - profitDiscount))}",
+                        "${numberFormat.format(voucherList.getVoucherFilteredSum(oneMonthAgoStart, todayMonthEnd) * (1 - profitDiscount))}",
                     color: Color(0xFF1ED800),
                     month: "Próximo Mês",
                   ),
                   CardWidget(
                     balance:
-                        "${numberFormat.format(voucherList.getVoucherFilteredSum(todayMonth, plusOneMonth) * (1 - profitDiscount))}",
+                        "${numberFormat.format(voucherList.getVoucherFilteredSum(todayMonthStart, plusOneMonthEnd) * (1 - profitDiscount))}",
                     color: Color(0xFF1ED800),
                     month: "Em Dois Meses",
                   ),

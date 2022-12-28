@@ -69,7 +69,7 @@ class _LastVoucherAddedState extends State<LastVoucherAdded> {
               }
 
               return Center(
-                child: CircularProgressIndicator.adaptive(),
+                child: CircularProgressIndicator(),
               );
             },
           ),
