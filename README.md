@@ -2,8 +2,8 @@
 
 > Aplicativo Funcionando:
 
-<img src="https://user-images.githubusercontent.com/38363665/213792172-a72c6542-5f3a-4f79-82ce-b5499a64757c.gif" width="300"> | <img src="https://user-images.githubusercontent.com/38363665/213792972-f06f4fa2-661c-46b4-bbb7-514ce1ccf3be.png" width="300">
- | <img src="https://user-images.githubusercontent.com/38363665/213792834-a94a79a8-4a39-4c29-8bcd-411abd1b45ef.png" width="300"> 
+<img src="https://user-images.githubusercontent.com/38363665/213792172-a72c6542-5f3a-4f79-82ce-b5499a64757c.gif" width="200"> <img src="https://user-images.githubusercontent.com/38363665/213792972-f06f4fa2-661c-46b4-bbb7-514ce1ccf3be.png" width="200">
+  <img src="https://user-images.githubusercontent.com/38363665/213792834-a94a79a8-4a39-4c29-8bcd-411abd1b45ef.png" width="200"> 
 
 
 
