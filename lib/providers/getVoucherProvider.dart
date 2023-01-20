@@ -17,7 +17,7 @@ class getVoucherProvider extends ChangeNotifier {
 
   Future<List<getVoucherModel>> getSortedVouchers() async {
     if (_vouchers.isNotEmpty) {
-      _vouchers.sort((a, b) => b.date!.compareTo(a.date!));
+      _vouchers.sort((a, b) => b.createdAt!.compareTo(a.createdAt!));
     }
     return _vouchers;
   }

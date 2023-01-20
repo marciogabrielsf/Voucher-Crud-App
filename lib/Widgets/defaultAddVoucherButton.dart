@@ -17,7 +17,7 @@ class DefaultAddVoucherButton extends StatelessWidget {
     return FloatingActionButton(
       backgroundColor: Color(0xFF1ED800),
       onPressed: () async {
-        HapticFeedback.vibrate();
+        HapticFeedback.mediumImpact();
         var fetchedVouchers =
             Provider.of<getVoucherProvider>(context, listen: false);
         await showCupertinoModalBottomSheet(

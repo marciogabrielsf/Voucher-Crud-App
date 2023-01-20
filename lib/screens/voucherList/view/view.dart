@@ -234,7 +234,7 @@ class _VoucherListBodyState extends State<VoucherListBody>
 
 void handleOpenBottomSheet(
     BuildContext context, getVoucherModel voucher) async {
-  HapticFeedback.vibrate();
+  HapticFeedback.mediumImpact();
   var fetchedVouchers = Provider.of<getVoucherProvider>(context, listen: false);
   await showCupertinoModalBottomSheet(
       isDismissible: false,
