@@ -76,6 +76,7 @@ class _VoucherListBodyState extends State<VoucherListBody>
     });
 
     return SafeArea(
+      bottom: false,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

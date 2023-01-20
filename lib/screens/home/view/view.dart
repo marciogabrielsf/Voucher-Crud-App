@@ -135,12 +135,8 @@ class _HomeBodyState extends State<HomeBody> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: GestureDetector(
-                onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => VoucherListScreen(),
-                  ),
-                ),
+                onTap: () => Navigator.of(context, rootNavigator: true).push(
+                    MaterialPageRoute(builder: (_) => VoucherListScreen())),
                 child: Container(
                   color: Colors.transparent,
                   child: ButtonWithLabel(
