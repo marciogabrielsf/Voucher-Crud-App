@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_test_project/config/constants.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:provider/provider.dart';
 
@@ -15,7 +16,7 @@ class DefaultAddVoucherButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-      backgroundColor: Color(0xFF1ED800),
+      backgroundColor: kGreenButtonColor,
       onPressed: () async {
         HapticFeedback.mediumImpact();
         var fetchedVouchers =
