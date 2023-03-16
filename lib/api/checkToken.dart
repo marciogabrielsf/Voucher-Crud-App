@@ -19,7 +19,7 @@ Future<void> checkToken(BuildContext context) async {
 
   try {
     var response = await http.get(url,
-        headers: {"authorization": "$token"}).timeout(Duration(seconds: 30));
+        headers: {"authorization": "$token"}).timeout(Duration(seconds: 45));
 
     if (response.statusCode == 200) {
       userProvider.setUser(response.body);

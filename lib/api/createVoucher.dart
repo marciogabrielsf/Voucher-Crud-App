@@ -30,9 +30,9 @@ Future<void> createVoucher(
   var parsedOrder = int.parse(orderNumber);
 
   var now = DateTime.now();
-  var splitedDate = voucherDate.split('/');
-  var date = DateTime(int.parse(splitedDate[2]), int.parse(splitedDate[1]),
-              int.parse(splitedDate[0]), now.hour, now.minute, now.second)
+  var splittedDate = voucherDate.split('/');
+  var date = DateTime(int.parse(splittedDate[2]), int.parse(splittedDate[1]),
+              int.parse(splittedDate[0]), now.hour, now.minute, now.second)
           .toIso8601String() +
       'Z';
 
