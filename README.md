@@ -20,7 +20,7 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 ## 💻 Pré-requisitos
 
 Antes de começar, verifique se você atendeu aos seguintes requisitos:
-* Flutter: ^3.3.5
+* Flutter: ^3.7.0
 
 ## 🚀 Instalando o Voucher Crud
 
