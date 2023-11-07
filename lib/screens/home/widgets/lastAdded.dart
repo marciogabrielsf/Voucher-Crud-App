@@ -48,8 +48,9 @@ class _LastVoucherAddedState extends State<LastVoucherAdded> {
                   child: Text('Erro'),
                 );
               }
+              print(snapshot);
 
-              if (snapshot.hasData) {
+              if (snapshot.connectionState == ConnectionState.done) {
                 if (snapshot.data!.length > 0) {
                   var vouchers = snapshot.data as List<getVoucherModel>;
                   return ListView.builder(
